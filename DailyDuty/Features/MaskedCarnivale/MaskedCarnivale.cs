@@ -11,7 +11,6 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json.Linq;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace DailyDuty.Features.MaskedCarnivale;
 
@@ -104,8 +103,8 @@ public unsafe class MaskedCarnivale : Module<MaskedCarnivaleConfig, MaskedCarniv
     private void AozContentResultPostSetup(AddonEvent eventType, AddonArgs addonInfo) {
     	var addon = (AtkUnitBase*) addonInfo.Addon.Address;
         
-    	if (addon->AtkValues[112] is not { Type: ValueType.UInt, UInt: var completionIndex }) throw new Exception("Type Mismatch Exception");
-    	if (addon->AtkValues[114] is not { Type: ValueType.Bool, Byte: var completionStatus }) throw new Exception("Type Mismatch Exception");
+    	if (addon->AtkValues[112] is not { Type: AtkValueType.UInt, UInt: var completionIndex }) throw new Exception("Type Mismatch Exception");
+    	if (addon->AtkValues[114] is not { Type: AtkValueType.Bool, Byte: var completionStatus }) throw new Exception("Type Mismatch Exception");
         
     	var addonId = completionIndex switch {
     		0 => 12449,

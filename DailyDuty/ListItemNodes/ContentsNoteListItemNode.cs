@@ -6,8 +6,8 @@ using ContentsNoteModule = FFXIVClientStructs.FFXIV.Client.Game.UI.ContentsNote;
 
 namespace DailyDuty.ListItemNodes;
 
-public unsafe class ContentsNoteListItemNode : ListItemNode<ContentsNote> {
-    public override float ItemHeight => 32.0f;
+public unsafe class ContentsNoteListItemNode : ListItemNode<ContentsNote>, IListItemNode {
+    public static float ItemHeight => 32.0f;
 
     private readonly IconImageNode iconNode;
     private readonly TextNode labelNode;

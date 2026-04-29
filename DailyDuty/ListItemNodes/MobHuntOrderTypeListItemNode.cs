@@ -6,8 +6,8 @@ using Lumina.Excel.Sheets;
 
 namespace DailyDuty.ListItemNodes;
 
-public unsafe class MobHuntOrderTypeListItemNode : ListItemNode<MobHuntOrderType> {
-    public override float ItemHeight => 32.0f;
+public unsafe class MobHuntOrderTypeListItemNode : ListItemNode<MobHuntOrderType>, IListItemNode {
+    public static float ItemHeight => 32.0f;
 
     private readonly IconImageNode iconNode;
     private readonly TextNode labelNode;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using DailyDuty.Classes;
@@ -23,7 +24,7 @@ public class ModuleBrowserWindow : NativeAddon {
     private ModuleOptionNode? selectedOption;
     private DataNodeTab dataTabSelected;
 
-    protected override unsafe void OnSetup(AtkUnitBase* addon) {
+    protected override unsafe void OnSetup(AtkUnitBase* addon, Span<AtkValue> _) {
         statusNode = null;
         
         mainContainerNode = new SimpleComponentNode {

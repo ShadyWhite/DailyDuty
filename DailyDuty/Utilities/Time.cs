@@ -46,7 +46,7 @@ public static class Time {
     public static unsafe DateTime NextJumboCactpotReset() {
         var worldId = AgentLobby.Instance()->LobbyData.HomeWorldId;
         var world = Services.DataManager.GetExcelSheet<World>().GetRow(worldId);
-        var region = Services.DataManager.GetExcelSheet<WorldDCGroupType>().GetRow(world.DataCenter.RowId).Region;
+        var region = Services.DataManager.GetExcelSheet<WorldDCGroupType>().GetRow(world.DataCenter.RowId).Region.RowId;
 
         return region switch {
             // Japan

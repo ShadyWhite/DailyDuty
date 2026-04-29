@@ -10,7 +10,7 @@ namespace DailyDuty.Windows;
 
 public class LuminaMultiSelectWindow<T> : NativeAddon where T : struct, IExcelRow<T> {
 
-    protected override unsafe void OnSetup(AtkUnitBase* addon) {
+    protected override unsafe void OnSetup(AtkUnitBase* addon, Span<AtkValue> _) {
         var scrollable = new ScrollingListNode {
             AutoHideScrollBar = true,
             Size = ContentSize,

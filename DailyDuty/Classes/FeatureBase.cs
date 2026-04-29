@@ -40,7 +40,7 @@ public abstract class FeatureBase {
     private void Update(IFramework framework)
         => OnFeatureUpdate();
     
-    private void TerritoryChanged(ushort obj)
+    private void TerritoryChanged(uint u)
         => OnTerritoryChanged();
 
     protected abstract void OnFeatureUpdate();

@@ -102,13 +102,13 @@ public unsafe class DutyRouletteDutyFinderController : IDisposable {
 
     private bool ShouldModifyElementMethod(AddonContentsFinder* addonContentsFinder, ContentsFinderListItem listItem) {
         if (!module.ModuleConfig.ColorContentFinder) return false;
-        if (listItem.ContentType is not ContentsId.ContentsType.Roulette) return false;
+        if (listItem.ContentType is not ContentsType.Roulette) return false;
 
         return module.ModuleConfig.TrackedRoulettes.Contains(listItem.GetContentId().Id);
     }
     
     private void UpdateElementMethod(AddonContentsFinder* addonContentsFinder, ContentsFinderListItem listItem) {
-        if (listItem.ContentType is not  ContentsId.ContentsType.Roulette) return;
+        if (listItem.ContentType is not  ContentsType.Roulette) return;
 
         var rouletteInfo = Services.DataManager
             .GetExcelSheet<ContentRoulette>()

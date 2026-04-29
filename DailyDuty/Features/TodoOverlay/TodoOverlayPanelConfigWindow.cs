@@ -14,7 +14,7 @@ namespace DailyDuty.Features.TodoOverlay;
 
 public class TodoOverlayPanelConfigWindow(TodoOverlayConfig moduleTodoOverlayConfig, TodoPanelConfig config, TextNode? labelTextNode = null) : NativeAddon {
 
-    protected override unsafe void OnSetup(AtkUnitBase* addon) {
+    protected override unsafe void OnSetup(AtkUnitBase* addon, Span<AtkValue> _) {
         VerticalListNode listNode;
 
         var originalTextColor = config.TextColor;

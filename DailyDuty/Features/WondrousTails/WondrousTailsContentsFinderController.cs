@@ -115,7 +115,7 @@ public unsafe class WondrousTailsContentsFinderController : IDisposable {
 
     private bool ShouldModifyElementMethod(AddonContentsFinder* addonContentsFinder, ContentsFinderListItem listItem) {
         if (module.ModuleConfig is { CloverIndicator: false, ColorDutyFinderText: false }) return false;
-        if (listItem.ContentType is not ContentsId.ContentsType.Regular) return false;
+        if (listItem.ContentType is not ContentsType.Regular) return false;
 
         return IsTailsTask(listItem.ContentsFinderCondition);
     }

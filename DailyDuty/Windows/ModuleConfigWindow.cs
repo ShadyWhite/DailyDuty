@@ -1,4 +1,5 @@
-﻿using DailyDuty.Classes;
+﻿using System;
+using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit;
@@ -10,7 +11,7 @@ public class ModuleConfigWindow<T> : NativeAddon where T : ModuleBase {
 
     private ConfigNodeBase? configNode;
     
-    protected override unsafe void OnSetup(AtkUnitBase* addon) {
+    protected override unsafe void OnSetup(AtkUnitBase* addon, Span<AtkValue> _) {
         configNode = Module.ConfigNode;
         configNode.Position = ContentStartPosition;
         configNode.Size = ContentSize;

@@ -7,7 +7,7 @@ using KamiToolKit.Nodes;
 namespace DailyDuty.Windows;
 
 public class MultiSelectWindow : NativeAddon {
-    protected override unsafe void OnSetup(AtkUnitBase* addon) {
+    protected override unsafe void OnSetup(AtkUnitBase* addon, Span<AtkValue> _) {
         var scrollable = new ScrollingListNode {
             AutoHideScrollBar = true,
             Size = ContentSize,

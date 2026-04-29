@@ -15,7 +15,7 @@ public unsafe class ContentsFinderListItem : ListItemData {
     public ContentsId GetContentId()
         => GetDutyInfo()->Id;
 
-    public ContentsId.ContentsType ContentType
+    public ContentsType ContentType
         => GetContentId().ContentType;
 
     public ContentFinderCondition ContentsFinderCondition

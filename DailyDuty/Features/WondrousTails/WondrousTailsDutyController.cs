@@ -2,6 +2,7 @@
 using System.Linq;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
+using Dalamud.Game.DutyState;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 namespace DailyDuty.Features.WondrousTails;
@@ -16,7 +17,7 @@ public unsafe class WondrousTailsDutyController : IDisposable {
         Services.DutyState.DutyCompleted += OnDutyCompleted;
 
         if (Services.DutyState.IsDutyStarted) {
-            OnDutyStarted(null, Services.ClientState.TerritoryType);
+            OnDutyStarted(Services.ClientState.TerritoryType);
         }
     }
 
@@ -24,8 +25,14 @@ public unsafe class WondrousTailsDutyController : IDisposable {
         Services.DutyState.DutyStarted -= OnDutyStarted;
         Services.DutyState.DutyCompleted -= OnDutyCompleted;
     }
-    
-    private void OnDutyStarted(object? sender, ushort e) {
+
+    private void OnDutyCompleted(IDutyStateEventArgs args)
+        => OnDutyCompleted(args.TerritoryType.RowId);
+
+    private void OnDutyStarted(IDutyStateEventArgs args)
+        => OnDutyStarted(args.TerritoryType.RowId);
+
+    private void OnDutyStarted(uint e) {
     	if (!module.ModuleConfig.InstanceNotifications) return;
         if (!module.PlayerHasBook || module.IsBookExpired) return;
     	if (module.ModuleStatus is CompletionStatus.Complete) return;
@@ -47,7 +54,7 @@ public unsafe class WondrousTailsDutyController : IDisposable {
     	}
     }
 
-    private void OnDutyCompleted(object? sender, ushort e) {
+    private void OnDutyCompleted(uint e) {
         if (!module.ModuleConfig.InstanceNotifications) return;
         if (!module.PlayerHasBook || module.IsBookExpired) return;
         if (module.ModuleStatus is CompletionStatus.Complete) return;
