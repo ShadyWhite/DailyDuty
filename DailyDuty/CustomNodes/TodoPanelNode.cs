@@ -236,6 +236,5 @@ public unsafe class TodoPanelNode : OverlayNode {
         LoadedModule = loadedModule,
         String = module.Name,
         Config = Config,
-        TextTooltip = ":)",
     };
 }
