@@ -42,394 +42,394 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChallengeLog_DisplayName" xml:space="preserve">
-    <value>Challenge Log</value>
+    <value>Carnet des objectifs</value>
   </data>
   <data name="CustomDelivery_DisplayName" xml:space="preserve">
-    <value>Custom Delivery</value>
+    <value>Commandes spéciales</value>
   </data>
   <data name="DomanEnclave_DisplayName" xml:space="preserve">
-    <value>Doman Enclave</value>
+    <value>Reconstruction du quartier enclavé</value>
   </data>
   <data name="DutyFinderEnhancements_DisplayName" xml:space="preserve">
-    <value>Duty Finder Enhancements</value>
+    <value>Améliorations de l'outil de mission</value>
   </data>
   <data name="DutyRoulette_DisplayName" xml:space="preserve">
-    <value>Duty Roulette</value>
+    <value>Missions quotidiennes</value>
   </data>
   <data name="FashionReport_DisplayName" xml:space="preserve">
-    <value>Fashion Report</value>
+    <value>Revue de mode</value>
   </data>
   <data name="FauxHollows_DisplayName" xml:space="preserve">
-    <value>Faux Hollows</value>
+    <value>Touché-tourné</value>
   </data>
   <data name="GrandCompanyProvision_DisplayName" xml:space="preserve">
-    <value>Grand Company Provision</value>
+    <value>Ravitaillement de ressources</value>
   </data>
   <data name="GrandCompanySquadron_DisplayName" xml:space="preserve">
-    <value>Grand Company Squadron</value>
+    <value>Escouade de Grande Compagnie</value>
   </data>
   <data name="GrandCompanySupply_DisplayName" xml:space="preserve">
-    <value>Grand Company Supply</value>
+    <value>Ravitaillement de matériel</value>
   </data>
   <data name="HuntMarksDaily_DisplayName" xml:space="preserve">
-    <value>Hunt Marks Daily</value>
+    <value>Contrat de chasse quotidien</value>
   </data>
   <data name="HuntMarksWeekly_DisplayName" xml:space="preserve">
-    <value>Hunt Marks Weekly</value>
+    <value>Contrat de chasse hebdomadaire</value>
   </data>
   <data name="JumboCactpot_DisplayName" xml:space="preserve">
-    <value>Jumbo Cactpot</value>
+    <value>Méga Cactpot</value>
   </data>
   <data name="Levequest_DisplayName" xml:space="preserve">
-    <value>Levequest</value>
+    <value>Mandat</value>
   </data>
   <data name="MaskedCarnivale_DisplayName" xml:space="preserve">
-    <value>Masked Carnivale</value>
+    <value>La Grande Mascarade</value>
   </data>
   <data name="MiniCactpot_DisplayName" xml:space="preserve">
     <value>Mini Cactpot</value>
   </data>
   <data name="RaidsAlliance_DisplayName" xml:space="preserve">
-    <value>Raids Alliance</value>
+    <value>Raids en alliance</value>
   </data>
   <data name="RaidsNormal_DisplayName" xml:space="preserve">
-    <value>Raids Normal</value>
+    <value>Raids normaux</value>
   </data>
   <data name="ServerInfoBar_DisplayName" xml:space="preserve">
-    <value>Server Info Bar</value>
+    <value>Barre d'information serveur</value>
   </data>
   <data name="TimersOverlay_DisplayName" xml:space="preserve">
-    <value>Timers Overlay</value>
+    <value>Affichage des comptes à rebours</value>
   </data>
   <data name="TodoListOverlay_DisplayName" xml:space="preserve">
-    <value>Todo List Overlay</value>
+    <value>Affichage de la liste de tâche</value>
   </data>
   <data name="TreasureMap_DisplayName" xml:space="preserve">
-    <value>Treasure Map</value>
+    <value>Carte au trésor</value>
   </data>
   <data name="TribalQuests_DisplayName" xml:space="preserve">
-    <value>Tribal Quests</value>
+    <value>Quêtes des peuples alliés</value>
   </data>
   <data name="WondrousTails_DisplayName" xml:space="preserve">
-    <value>Wondrous Tails</value>
+    <value>Carnet de Khloe</value>
   </data>
   <data name="ModuleTypes_Daily" xml:space="preserve">
-    <value>Daily</value>
+    <value>Journalier</value>
   </data>
   <data name="ModuleTypes_Weekly" xml:space="preserve">
-    <value>Weekly</value>
+    <value>Hebdomadaire</value>
   </data>
   <data name="ModuleTypes_Other" xml:space="preserve">
-    <value>Other</value>
+    <value>Autre</value>
   </data>
   <data name="ModuleTypes_Features" xml:space="preserve">
-    <value>Features</value>
+    <value>Fonctionnalités</value>
   </data>
   <data name="ModuleTypes_Debug" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="CompletionStatus_Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Inconnu</value>
   </data>
   <data name="CompletionStatus_Disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Désactivé</value>
   </data>
   <data name="CompletionStatus_Incomplete" xml:space="preserve">
-    <value>Incomplete</value>
+    <value>Non terminé</value>
   </data>
   <data name="CompletionStatus_Unavailable" xml:space="preserve">
-    <value>Unavailable</value>
+    <value>Indisponible</value>
   </data>
   <data name="CompletionStatus_InProgress" xml:space="preserve">
-    <value>In Progress</value>
+    <value>En cours</value>
   </data>
   <data name="CompletionStatus_Complete" xml:space="preserve">
-    <value>Complete</value>
+    <value>Terminé</value>
   </data>
   <data name="CompletionStatus_Suppressed" xml:space="preserve">
-    <value>Suppressed</value>
+    <value>Supprimé</value>
   </data>
   <data name="CompletionStatus_ResultsAvailable" xml:space="preserve">
-    <value>Results Available</value>
+    <value>Résultats disponibles</value>
   </data>
   <data name="ComparisonMode_Below" xml:space="preserve">
-    <value>Below</value>
+    <value>En dessous</value>
   </data>
   <data name="ComparisonMode_NotEqual" xml:space="preserve">
-    <value>Not Equal</value>
+    <value>Non égal</value>
   </data>
   <data name="ComparisonMode_Above" xml:space="preserve">
-    <value>Above</value>
+    <value>Au-dessus</value>
   </data>
   <data name="FashionReportMode_AllAttemptsUsed" xml:space="preserve">
-    <value>All Attempts Used</value>
+    <value>Toutes les tentatives ont été utilisées</value>
   </data>
   <data name="FashionReportMode_OneAttemptUsed" xml:space="preserve">
-    <value>One Attempt Used</value>
+    <value>Une tentative utilisée</value>
   </data>
   <data name="FashionReportMode_ScoredOver80" xml:space="preserve">
-    <value>Scored Over 80</value>
+    <value>Note supérieure à 80</value>
   </data>
   <data name="GenericDataNode_ModuleStatus" xml:space="preserve">
-    <value>Module Status</value>
+    <value>État du module</value>
   </data>
   <data name="GenericDataNode_NextReset" xml:space="preserve">
-    <value>Next Reset</value>
+    <value>Prochaine réinitialisation</value>
   </data>
   <data name="GenericDataNode_TimeRemaining" xml:space="preserve">
-    <value>Time Remaining</value>
+    <value>Temps restant</value>
   </data>
   <data name="GenericDataNode_AvailableNow" xml:space="preserve">
-    <value>Available Now</value>
+    <value>Disponible dès maintenant</value>
   </data>
   <data name="GenericDataNode_EnableModule" xml:space="preserve">
-    <value>Enable module to initialize</value>
+    <value>Activer le module pour l'initialiser</value>
   </data>
   <data name="NotificationSettingsNode_NotificationSettings" xml:space="preserve">
-    <value>Notification Settings</value>
+    <value>Paramètres de notification</value>
   </data>
   <data name="NotificationSettingsNode_LoginStatus" xml:space="preserve">
-    <value>Send status on login</value>
+    <value>Envoi de l'état à la connexion</value>
   </data>
   <data name="NotificationSettingsNode_ZoneStatus" xml:space="preserve">
-    <value>Send status on zone change</value>
+    <value>Envoi l'état lors d'un changement de zone</value>
   </data>
   <data name="NotificationSettingsNode_ResetStatus" xml:space="preserve">
-    <value>Send status on module reset</value>
+    <value>Envoi l'état lors de la réinitialisation du module</value>
   </data>
   <data name="NotificationSettingsNode_CustomStatus" xml:space="preserve">
-    <value>Custom Status Message</value>
+    <value>Message personnalisé d'état</value>
   </data>
   <data name="NotificationSettingsNode_CustomReset" xml:space="preserve">
-    <value>Custom Reset Message</value>
+    <value>Message personnalisé à la réinitialisation</value>
   </data>
   <data name="NotificationSettingsNode_ChatChannel" xml:space="preserve">
-    <value>Chat Channel</value>
+    <value>Canal de discussion</value>
   </data>
   <data name="ConfigNodeBase_ModuleSettings" xml:space="preserve">
-    <value>Module Settings</value>
+    <value>Réglages du module</value>
   </data>
   <data name="ConfigNodeBase_NoOptions" xml:space="preserve">
-    <value>No options available for this module</value>
+    <value>Aucune option n'est disponible pour ce module</value>
   </data>
   <data name="DataNodeBase_ModuleData" xml:space="preserve">
-    <value>Module Data</value>
+    <value>Donnée du module</value>
   </data>
   <data name="DataNodeBase_Status" xml:space="preserve">
-    <value>Status</value>
+    <value>État</value>
   </data>
   <data name="DataNodeBase_Data" xml:space="preserve">
-    <value>Data</value>
+    <value>Donnée</value>
   </data>
   <data name="DataNodeBase_Snooze" xml:space="preserve">
-    <value>Snooze</value>
+    <value>Mettre en veille</value>
   </data>
   <data name="DataNodeBase_Unsnooze" xml:space="preserve">
-    <value>Unsnooze</value>
+    <value>Sortir de la veille</value>
   </data>
   <data name="DataNodeBase_SnoozeTooltip" xml:space="preserve">
-    <value>Suppresses notification until the next reset</value>
+    <value>Désactive les notifications jusqu'à la prochaine réinitialisation</value>
   </data>
   <data name="ModuleBrowserWindow_SelectOption" xml:space="preserve">
-    <value>Please select an option on the left</value>
+    <value>Veuillez sélectionner une option à gauche</value>
   </data>
   <data name="ModuleOptionNode_FailedToLoad" xml:space="preserve">
-    <value>Module Failed To Load</value>
+    <value>Échec du chargement du module</value>
   </data>
   <data name="ModuleOptionNode_OpenConfig" xml:space="preserve">
-    <value>Open Configuration</value>
+    <value>Ouvrir Config</value>
   </data>
   <data name="TodoPanelNode_Important" xml:space="preserve">
     <value>Important</value>
   </data>
   <data name="WondrousTailsNode_DutyNotification" xml:space="preserve">
-    <value>[DailyDuty] This duty is a Wondrous Tails task</value>
+    <value>[DailyDuty] Cette mission fait partie du Carnet de Khloe</value>
   </data>
   <data name="TimerOverlayNode_OverlayTooltip" xml:space="preserve">
-    <value>Overlay from DailyDuty plugin</value>
+    <value>Affichage issu du plugin DailyDuty</value>
   </data>
   <data name="DailyDutyPlugin_Configuration" xml:space="preserve">
-    <value>Daily Duty Configuration</value>
+    <value>Config Daily Duty</value>
   </data>
   <data name="DailyDutyPlugin_OpenConfigWindow" xml:space="preserve">
-    <value>Open DailyDuty Config Window</value>
+    <value>Ouvre la fenêtre de configuration de DailyDuty</value>
   </data>
   <data name="DutyFinderEnhancements_DailyResetNotification" xml:space="preserve">
-    <value>[DailyDuty] Time until next daily reset</value>
+    <value>[DailyDuty] Temps restant avant la prochaine réinitialisation quotidienne</value>
   </data>
   <data name="DutyFinderEnhancements_OpenDailyDuty" xml:space="preserve">
-    <value>Open DailyDuty</value>
+    <value>Ouvrir DD</value>
   </data>
   <data name="DutyFinderEnhancements_TimerConfig" xml:space="preserve">
-    <value>Timer Configuration</value>
+    <value>Configuration du compte à rebours</value>
   </data>
   <data name="DutyFinderEnhancements_HideSeconds" xml:space="preserve">
-    <value>Hide Seconds</value>
+    <value>Masquer les secondes</value>
   </data>
   <data name="DutyFinderEnhancements_TextColor" xml:space="preserve">
-    <value>Text Color</value>
+    <value>Couleur du texte</value>
   </data>
   <data name="DutyFinderEnhancements_ButtonConfig" xml:space="preserve">
-    <value>DailyDuty Button Configuration</value>
+    <value>Configuration du bouton de DailyDuty</value>
   </data>
   <data name="DutyFinderEnhancements_ShowOpenButton" xml:space="preserve">
-    <value>Show "Open DailyDuty" Button</value>
+    <value>Affiche le bouton "Ouvrir DD"</value>
   </data>
   <data name="ServerInfoBar_FeatureConfig" xml:space="preserve">
-    <value>Feature Configuration</value>
+    <value>Configuration des fonctionnalités</value>
   </data>
   <data name="ServerInfoBar_ToggleableTimer" xml:space="preserve">
-    <value>Toggleable Timer</value>
+    <value>Minuterie à activation/désactivation</value>
   </data>
   <data name="ServerInfoBar_DailyTimer" xml:space="preserve">
-    <value>Daily Timer</value>
+    <value>Compte à rebours quotidien</value>
   </data>
   <data name="ServerInfoBar_WeeklyTimer" xml:space="preserve">
-    <value>Weekly Timer</value>
+    <value>Compte à rebours hebdomadaire</value>
   </data>
   <data name="ServerInfoBar_ClickOpenConfig" xml:space="preserve">
-    <value>Click to Open Configuration</value>
+    <value>Cliquer pour ouvrir la configuration</value>
   </data>
   <data name="ServerInfoBar_LeftClickChange" xml:space="preserve">
-    <value>Left Click to Change Mode</value>
+    <value>Clic gauche pour changer de mode</value>
   </data>
   <data name="ServerInfoBar_RightClickOpenConfig" xml:space="preserve">
-    <value>Right Click to Open Configuration</value>
+    <value>Clic droit pour ouvrir la configuration</value>
   </data>
   <data name="TimersOverlay_HideInDuties" xml:space="preserve">
-    <value>Hide in Duties</value>
+    <value>Masquer en mission</value>
   </data>
   <data name="TimersOverlay_HideInQuests" xml:space="preserve">
-    <value>Hide in Quest Events</value>
+    <value>Masquer en événement de quête</value>
   </data>
   <data name="TimersOverlay_HideSeconds" xml:space="preserve">
-    <value>Hide Timer Seconds</value>
+    <value>Masquer les secondes du compte à rebours</value>
   </data>
   <data name="TimersOverlay_ShowLabel" xml:space="preserve">
-    <value>Show Module Label</value>
+    <value>Afficher le nom du module</value>
   </data>
   <data name="TimersOverlay_ShowCountdown" xml:space="preserve">
-    <value>Show Countdown Text</value>
+    <value>Afficher le texte du compte à rebours</value>
   </data>
   <data name="TimersOverlay_EnableMoving" xml:space="preserve">
-    <value>Enable Moving Timers</value>
+    <value>Active le déplacement des comptes à rebours</value>
   </data>
   <data name="TimersOverlay_Scale" xml:space="preserve">
-    <value>Scale</value>
+    <value>Échelle</value>
   </data>
   <data name="TimersOverlay_Selection" xml:space="preserve">
-    <value>Timer Selection</value>
+    <value>Sélection des comptes à rebours</value>
   </data>
   <data name="TodoOverlay_Panels" xml:space="preserve">
-    <value>Overlay Panels</value>
+    <value>Affichage des panneaux</value>
   </data>
   <data name="TodoOverlay_AddPanel" xml:space="preserve">
-    <value>Add Panel</value>
+    <value>Ajout d'un panneau</value>
   </data>
   <data name="TodoOverlay_Alignment" xml:space="preserve">
-    <value>Alignment</value>
+    <value>Alignement</value>
   </data>
   <data name="TodoOverlay_VerticalSpacing" xml:space="preserve">
-    <value>Vertical Spacing</value>
+    <value>Espacement vertical</value>
   </data>
   <data name="TodoOverlay_BackgroundAlpha" xml:space="preserve">
-    <value>Background Alpha</value>
+    <value>Arrière-plan Alpha</value>
   </data>
   <data name="TodoOverlay_ButtonAlpha" xml:space="preserve">
-    <value>Button Alpha</value>
+    <value>Bouton Alpha</value>
   </data>
   <data name="TodoOverlay_HideFrame" xml:space="preserve">
-    <value>Hide Frame</value>
+    <value>Masquer le cadre</value>
   </data>
   <data name="TodoOverlay_EnableMoving" xml:space="preserve">
-    <value>Enable Moving</value>
+    <value>Active le déplacement</value>
   </data>
   <data name="TodoOverlay_PinToQuestList" xml:space="preserve">
-    <value>Pin to Quest List</value>
+    <value>Épingle à la liste des objectifs</value>
   </data>
   <data name="TodoOverlay_OnlyOnePinned" xml:space="preserve">
-    <value>Only one panel can be pinned to the quest list at a time.</value>
+    <value>Un seul panneau peut être épinglé à la liste des objectifs à la fois.</value>
   </data>
   <data name="TodoOverlay_OutlineColor" xml:space="preserve">
-    <value>Text Outline Color</value>
+    <value>Couleur du contour du texte</value>
   </data>
   <data name="TodoOverlay_OpenMainConfig" xml:space="preserve">
-    <value>Open Main Config</value>
+    <value>Ouvrir Config Principal</value>
   </data>
   <data name="ChallengeLog_DutyFinderWarning" xml:space="preserve">
-    <value>Enable Duty Finder Warning</value>
+    <value>Active les alertes de l'outil de mission</value>
   </data>
   <data name="ChallengeLog_DutyFinderWarningSound" xml:space="preserve">
-    <value>Enable Duty Finder Warning Sound</value>
+    <value>Active les alertes sonores de l'outil de mission</value>
   </data>
   <data name="ChallengeLog_TrackedEntries" xml:space="preserve">
-    <value>Tracked Challenge Log Entries</value>
+    <value>Entrées suivies du carnet des objectifs</value>
   </data>
   <data name="ChallengeLog_EditTrackedEntries" xml:space="preserve">
-    <value>Edit Tracked Challenge Log Entries</value>
+    <value>Modifier les entrées suivies du carnet des objectifs</value>
   </data>
   <data name="ChallengeLog_TrackedDutyEntries" xml:space="preserve">
-    <value>Tracked Duty Finder Warning Entries</value>
+    <value>Alerte des entrées suivies de l'outil de mission</value>
   </data>
   <data name="ChallengeLog_EditDutyEntries" xml:space="preserve">
-    <value>Edit Duty Finder Warning Entries</value>
+    <value>Modifier les alertes des entrées suivies de l'outil de mission</value>
   </data>
   <data name="ChallengeLog_TrackingSelection" xml:space="preserve">
-    <value>Challenge Log Tracking Selection</value>
+    <value>Sélection Suivie Carnet Objectifs</value>
   </data>
   <data name="ChallengeLog_DutyWarningSelection" xml:space="preserve">
-    <value>Challenge Log Duty Finder Warning Selection</value>
+    <value>Sélection Alerte Suivie Outil Mission</value>
   </data>
   <data name="CustomDelivery_AllowanceAmount" xml:space="preserve">
-    <value>Allowance Amount</value>
+    <value>Quantité de commande</value>
   </data>
   <data name="CustomDelivery_WarningTrigger" xml:space="preserve">
-    <value>Warning Trigger</value>
+    <value>Déclencheur d'alerte</value>
   </data>
   <data name="CustomDelivery_AllowancesRemaining" xml:space="preserve">
-    <value>Allowances Remaining</value>
+    <value>Commandes restantes</value>
   </data>
   <data name="CustomDelivery_AllowancesNotUpdated" xml:space="preserve">
-    <value>Allowances Not Updated</value>
+    <value>Commandes non à jour</value>
   </data>
   <data name="DomanEnclave_CurrentMaxAllowance" xml:space="preserve">
-    <value>Current Max Allowance</value>
+    <value>Don actuel maximum</value>
   </data>
   <data name="DomanEnclave_DonatedThisWeek" xml:space="preserve">
-    <value>Donated This Week</value>
+    <value>Donation hebdomadaire</value>
   </data>
   <data name="DomanEnclave_AllowanceRemaining" xml:space="preserve">
-    <value>Allowance Remaining</value>
+    <value>Donation restante</value>
   </data>
   <data name="DomanEnclave_DonatedNotUpdated" xml:space="preserve">
-    <value>Donated Not Updated</value>
+    <value>Donation non à jour</value>
   </data>
   <data name="DomanEnclave_RemainingNotUpdated" xml:space="preserve">
-    <value>Remaining Not Updated</value>
+    <value>Donation restante non à jour</value>
   </data>
   <data name="DomanEnclave_UnavailableStatus" xml:space="preserve">
-    <value>Status is unavailable, visit the Doman Enclave to update</value>
+    <value>État indisponible, rendez-vous au quartier enclavé pour le mettre à jour</value>
   </data>
   <data name="DomanEnclave_UnknownStatus" xml:space="preserve">
-    <value>Status unknown, visit the enclave to update</value>
+    <value>État inconnu, rendez-vous au quartier enclavé pour le mettre à jour</value>
   </data>
   <data name="DutyRoulette_MarkCompleteTomecapped" xml:space="preserve">
-    <value>Mark Complete When Weekly Tomecapped</value>
+    <value>Marquer complété quand les mémoquartz hebdomadaire sont au maximum</value>
   </data>
   <data name="DutyRoulette_ColorRoulette" xml:space="preserve">
-    <value>Color Duty Roulette</value>
+    <value>Couleur de l'outil de mission</value>
   </data>
   <data name="DutyRoulette_IncompleteColor" xml:space="preserve">
-    <value>Incomplete Color</value>
+    <value>Couleur non complétée</value>
   </data>
   <data name="DutyRoulette_CompleteColor" xml:space="preserve">
-    <value>Complete Color</value>
+    <value>Couleur complétée</value>
   </data>
   <data name="DutyRoulette_TrackedEntries" xml:space="preserve">
-    <value>Tracked Duty Finder Entries</value>
+    <value>Entrées suivies de l'outil de mission</value>
   </data>
   <data name="DutyRoulette_NotUpdated" xml:space="preserve">
-    <value>Status not Updated</value>
+    <value>État non à jour</value>
   </data>
   <data name="FashionReport_CompletionMode" xml:space="preserve">
     <value>Completion Mode</value>
