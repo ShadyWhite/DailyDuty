@@ -48,11 +48,18 @@ public unsafe class GrandCompanyProvision : Module<GrandCompanyProvisionConfig, 
         if (!agent->IsAgentActive()) return;
         if (agent->NumItems < 11) return;
 
-        // Offset ClassJob by -8, as there's 8 non-DoH/DoL jobs at the start of the sheet that native omits
-        // Grab items 8, 9, 10 from the Agent
-        foreach (uint index in Enumerable.Range(8, 3)) {
-            if (ModuleData.ClassJobStatus[index + 8] != !agent->ItemArray[index].IsTurnInAvailable) {
-                ModuleData.ClassJobStatus[index + 8] = !agent->ItemArray[index].IsTurnInAvailable;
+        var supplyLength = agent->SupplyProvisioningData->SupplyData.Length;
+        var provisionLength = agent->SupplyProvisioningData->ProvisioningData.Length;
+        var provisionSpan = new Span<GrandCompanyItem>(agent->ItemArray + supplyLength, provisionLength);
+
+        foreach (var item in provisionSpan) {
+            if (item is { ItemId: 0 }) continue;
+
+            // Offset ClassJob by 8, as there's 8 non-DoH/DoL jobs at the start of the sheet that native omits
+            var classJobPosition = (uint)(item.Position + 8);
+
+            if (ModuleData.ClassJobStatus[classJobPosition] != !item.IsTurnInAvailable) {
+                ModuleData.ClassJobStatus[classJobPosition] = !item.IsTurnInAvailable;
                 ModuleData.MarkDirty();
             }
         }
