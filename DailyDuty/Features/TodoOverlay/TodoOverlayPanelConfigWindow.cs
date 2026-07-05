@@ -128,7 +128,6 @@ public class TodoOverlayPanelConfigWindow(TodoOverlayConfig moduleTodoOverlayCon
                         new FloatSliderNode {
                             Min = 0.5f,
                             Max = 3.0f,
-                            Step = 5,
                             Value = config.Scale,
                             OnValueChanged = newValue => {
                                 config.Scale = newValue;
