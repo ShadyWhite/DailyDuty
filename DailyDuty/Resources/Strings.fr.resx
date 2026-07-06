@@ -54,7 +54,7 @@
     <value>Améliorations de l'outil de mission</value>
   </data>
   <data name="DutyRoulette_DisplayName" xml:space="preserve">
-    <value>Missions quotidiennes</value>
+    <value>Missions aléatoires</value>
   </data>
   <data name="FashionReport_DisplayName" xml:space="preserve">
     <value>Revue de mode</value>
@@ -249,7 +249,7 @@
     <value>Affichage issu du plugin DailyDuty</value>
   </data>
   <data name="DailyDutyPlugin_Configuration" xml:space="preserve">
-    <value>Config Daily Duty</value>
+    <value>Config DailyDuty</value>
   </data>
   <data name="DailyDutyPlugin_OpenConfigWindow" xml:space="preserve">
     <value>Ouvre la fenêtre de configuration de DailyDuty</value>
@@ -381,16 +381,16 @@
     <value>Sélection Alerte Suivie Outil Mission</value>
   </data>
   <data name="CustomDelivery_AllowanceAmount" xml:space="preserve">
-    <value>Quantité de commande</value>
+    <value>Quantité de livraison</value>
   </data>
   <data name="CustomDelivery_WarningTrigger" xml:space="preserve">
     <value>Déclencheur d'alerte</value>
   </data>
   <data name="CustomDelivery_AllowancesRemaining" xml:space="preserve">
-    <value>Commandes restantes</value>
+    <value>Livraisons restantes</value>
   </data>
   <data name="CustomDelivery_AllowancesNotUpdated" xml:space="preserve">
-    <value>Commandes non à jour</value>
+    <value>Livraisons non à jour</value>
   </data>
   <data name="DomanEnclave_CurrentMaxAllowance" xml:space="preserve">
     <value>Don actuel maximum</value>
@@ -432,258 +432,258 @@
     <value>État non à jour</value>
   </data>
   <data name="FashionReport_CompletionMode" xml:space="preserve">
-    <value>Completion Mode</value>
+    <value>Choix d'achèvement</value>
   </data>
   <data name="FashionReport_HighestScore" xml:space="preserve">
-    <value>Highest Score</value>
+    <value>Meilleur score</value>
   </data>
   <data name="FashionReport_ScoreNotUpdated" xml:space="preserve">
-    <value>Highest Score Not Updated</value>
+    <value>Meilleur score non à jour</value>
   </data>
   <data name="FashionReport_Available" xml:space="preserve">
-    <value>Fashion Report Available</value>
+    <value>Revue de mode disponible</value>
   </data>
   <data name="FashionReport_AvailableNotUpdated" xml:space="preserve">
-    <value>Available Not Updated</value>
+    <value>Disponibilité non à jour</value>
   </data>
   <data name="FashionReport_AvailableStatus" xml:space="preserve">
-    <value>Available</value>
+    <value>Disponible</value>
   </data>
   <data name="FashionReport_NotAvailable" xml:space="preserve">
-    <value>Not Available</value>
+    <value>Indisponible</value>
   </data>
   <data name="FauxHollows_IncludeRetelling" xml:space="preserve">
-    <value>Include Retelling</value>
+    <value>Inclure la reformulation</value>
   </data>
   <data name="FauxHollows_CompletionCount" xml:space="preserve">
-    <value>Current Completion Count</value>
+    <value>Tentative actuelle complétée</value>
   </data>
   <data name="GrandCompanySquadron_MissionCompleted" xml:space="preserve">
-    <value>Mission Completed</value>
+    <value>Mission accomplie</value>
   </data>
   <data name="GrandCompanySquadron_MissionStarted" xml:space="preserve">
-    <value>Mission Started</value>
+    <value>Mission en cours</value>
   </data>
   <data name="GrandCompanySquadron_CompletionTime" xml:space="preserve">
-    <value>Mission Completion Time</value>
+    <value>Horodatage mission accomplie</value>
   </data>
   <data name="GrandCompanySquadron_TimeRemaining" xml:space="preserve">
-    <value>Mission Time Remaining</value>
+    <value>Durée restante</value>
   </data>
   <data name="GrandCompanySquadron_NotStarted" xml:space="preserve">
-    <value>Not Started</value>
+    <value>Au repos</value>
   </data>
   <data name="JumboCactpot_Ticket" xml:space="preserve">
-    <value>Ticket</value>
+    <value>Billet</value>
   </data>
   <data name="JumboCactpot_TicketNotUpdated" xml:space="preserve">
-    <value>Ticket Not Updated</value>
+    <value>Billet non à jour</value>
   </data>
   <data name="JumboCactpot_TicketNotClaimed" xml:space="preserve">
-    <value>Ticket not Claimed</value>
+    <value>Billet non réclamé</value>
   </data>
   <data name="Levequest_Available" xml:space="preserve">
-    <value>Levequests Available</value>
+    <value>Autorisations restantes</value>
   </data>
   <data name="Levequest_Accepted" xml:space="preserve">
-    <value>Levequests Accepted</value>
+    <value>Mandats acceptés</value>
   </data>
   <data name="Levequest_AcceptedNotUpdated" xml:space="preserve">
-    <value>Accepted Not Updated</value>
+    <value>Acceptés non à jour</value>
   </data>
   <data name="MiniCactpot_AttemptsAvailable" xml:space="preserve">
-    <value>Attempts Available</value>
+    <value>Tentatives restantes</value>
   </data>
   <data name="MiniCactpot_AttemptsNotUpdated" xml:space="preserve">
-    <value>Attempts Not Updated</value>
+    <value>Tentatives non à jour</value>
   </data>
   <data name="Raids_NoneLimited" xml:space="preserve">
-    <value>No raids are currently limited.</value>
+    <value>Aucun raid n'est actuellement soumis à des restrictions.</value>
   </data>
   <data name="TreasureMap_LastGathered" xml:space="preserve">
-    <value>Last Map Gathered</value>
+    <value>Dernière carte récoltée</value>
   </data>
   <data name="TreasureMap_Gatherable" xml:space="preserve">
-    <value>Treasure Map Gatherable</value>
+    <value>Carte au trésor récoltable</value>
   </data>
   <data name="TribalQuests_QuestAmount" xml:space="preserve">
-    <value>Quest Amount</value>
+    <value>Nombre de quêtes</value>
   </data>
   <data name="TribalQuests_Available" xml:space="preserve">
-    <value>Tribal Quests Available</value>
+    <value>Quêtes PA disponible</value>
   </data>
   <data name="WondrousTails_InstanceNotifications" xml:space="preserve">
-    <value>Instance Notifications</value>
+    <value>Notifications d'instance</value>
   </data>
   <data name="WondrousTails_StickerNotification" xml:space="preserve">
-    <value>Sticker Available Notification</value>
+    <value>Notification d'autocollant disponible</value>
   </data>
   <data name="WondrousTails_UnclaimedNotification" xml:space="preserve">
-    <value>Unclaimed Book Notification</value>
+    <value>Notification carnet non réclamé</value>
   </data>
   <data name="WondrousTails_ShuffleNotification" xml:space="preserve">
-    <value>Shuffle Available Notification</value>
+    <value>Notification de recollage disponible</value>
   </data>
   <data name="WondrousTails_DutyFinderIntegration" xml:space="preserve">
-    <value>Duty Finder Integration</value>
+    <value>Intégration à l'outil de mission</value>
   </data>
   <data name="WondrousTails_RecolorEntries" xml:space="preserve">
-    <value>Recolor Duty Finder Entries</value>
+    <value>Recolore les entrées de l'outil de mission</value>
   </data>
   <data name="WondrousTails_EntryColor" xml:space="preserve">
-    <value>Entry Color</value>
+    <value>Couleur de l'entrée</value>
   </data>
   <data name="WondrousTails_ShowClover" xml:space="preserve">
-    <value>Show Clover Indicator</value>
+    <value>Affiche l'icône trèfle</value>
   </data>
   <data name="WondrousTails_BookObtained" xml:space="preserve">
-    <value>Book Obtained</value>
+    <value>Carnet obtenu</value>
   </data>
   <data name="WondrousTails_Deadline" xml:space="preserve">
-    <value>Deadline</value>
+    <value>Date limite</value>
   </data>
   <data name="WondrousTails_SecondChancePoints" xml:space="preserve">
-    <value>Second Chance Points</value>
+    <value>Coup de pouce</value>
   </data>
   <data name="WondrousTails_PlacedStickers" xml:space="preserve">
-    <value>Placed Stickers</value>
+    <value>Autocollants placés</value>
   </data>
   <data name="WondrousTails_NewBookAvailable" xml:space="preserve">
-    <value>New Book Available</value>
+    <value>Nouveau carnet disponible</value>
   </data>
   <data name="WondrousTails_BookExpired" xml:space="preserve">
-    <value>Book Expired</value>
+    <value>Carnet expiré</value>
   </data>
   <data name="WondrousTails_StickerAvailable" xml:space="preserve">
-    <value>Sticker Available</value>
+    <value>Autocollants disponible</value>
   </data>
   <data name="WondrousTails_ShuffleAvailable" xml:space="preserve">
-    <value>Shuffle Available</value>
+    <value>Recollage disponible</value>
   </data>
   <data name="WondrousTails_ForgotBook" xml:space="preserve">
-    <value>Wait! You forgot your Wondrous Tails book!</value>
+    <value>Attends ! Tu as oublié ton carnet de Khloe !</value>
   </data>
   <data name="StatusMessages_ChallengeLogIncomplete" xml:space="preserve">
-    <value>Challenge Log(s) Incomplete</value>
+    <value>Carnet des objectifs incomplet</value>
   </data>
   <data name="StatusMessages_CustomDeliveryIncomplete" xml:space="preserve">
-    <value>Custom Delivery(s) left to reach Threshold</value>
+    <value>Commande(s) spéciale(s) restante(s) pour atteindre le seuil</value>
   </data>
   <data name="StatusMessages_RouletteIncomplete" xml:space="preserve">
-    <value>Roulette(s) Incomplete</value>
+    <value>Mission(s) aléatoire(s) incomplète(s)</value>
   </data>
   <data name="StatusMessages_UnrealTrialIncomplete" xml:space="preserve">
-    <value>Unreal Trial Incomplete</value>
+    <value>Défi irréel incomplet</value>
   </data>
   <data name="StatusMessages_DeliveryIncomplete" xml:space="preserve">
-    <value>Delivery(s) Incomplete</value>
+    <value>Ravitaillement(s) incomplet(s)</value>
   </data>
   <data name="StatusMessages_HuntBillIncomplete" xml:space="preserve">
-    <value>Hunt Bill(s) Incomplete</value>
+    <value>Contrat(s) de chasse incomplet(s)</value>
   </data>
   <data name="StatusMessages_TicketRemaining" xml:space="preserve">
-    <value>Ticket(s) Remaining</value>
+    <value>Tentatives restantes</value>
   </data>
   <data name="StatusMessages_LevequestIncomplete" xml:space="preserve">
-    <value>Levequest(s) left to reach Threshold</value>
+    <value>Mandat(s) restant(s) pour atteindre le seuil</value>
   </data>
   <data name="StatusMessages_ChallengeIncomplete" xml:space="preserve">
-    <value>Challenge(s) Incomplete</value>
+    <value>Objectif(s) incomplet(s)</value>
   </data>
   <data name="StatusMessages_AllianceRaidIncomplete" xml:space="preserve">
-    <value>Alliance Raid(s) Incomplete</value>
+    <value>Raid(s) en alliance incomplet(s)</value>
   </data>
   <data name="StatusMessages_NormalRaidIncomplete" xml:space="preserve">
-    <value>Normal Raid(s) Incomplete</value>
+    <value>Raid(s) normal(aux) incomplet(s)</value>
   </data>
   <data name="StatusMessages_MissionResultsReady" xml:space="preserve">
-    <value>Mission Results Ready</value>
+    <value>Résultats de la mission disponible</value>
   </data>
   <data name="StatusMessages_MissionNotStarted" xml:space="preserve">
-    <value>Mission Not Started</value>
+    <value>Mission non commencée</value>
   </data>
   <data name="StatusMessages_QuestIncomplete" xml:space="preserve">
-    <value>Quest(s) left to reach Threshold</value>
+    <value>Quête(s) restante(s) pour atteindre le seuil</value>
   </data>
   <data name="StatusMessages_StickerRemaining" xml:space="preserve">
-    <value>Sticker(s) Remaining</value>
+    <value>Autocollant(s) restant(s)</value>
   </data>
   <data name="StatusMessages_Resetting" xml:space="preserve">
-    <value>Resetting</value>
+    <value>Réinitialisation</value>
   </data>
   <data name="Additional_DataNotSet" xml:space="preserve">
-    <value>Data Not Set</value>
+    <value>Données non définies</value>
   </data>
   <data name="Teleport_TeleportingTo" xml:space="preserve">
-    <value>Teleporting to</value>
+    <value>Téléportation à</value>
   </data>
   <data name="Teleport_Teleport" xml:space="preserve">
-    <value>Teleport</value>
+    <value>Téléportation</value>
   </data>
   <data name="EventLogging_Status" xml:space="preserve">
-    <value>Event logging is now</value>
+    <value>L'enregistrement des événements est maintenant activé</value>
   </data>
   <data name="EventLogging_Enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Disponible</value>
   </data>
   <data name="DailyDutyPlugin_Config" xml:space="preserve">
     <value>Config</value>
   </data>
   <data name="PanelConfig_Config" xml:space="preserve">
-    <value>Panel Config</value>
+    <value>Config Panneau</value>
   </data>
   <data name="Additional_GilRemaining" xml:space="preserve">
-    <value>gil Remaining</value>
+    <value>Gil restant</value>
   </data>
   <data name="Additional_DailyReset" xml:space="preserve">
-    <value>Daily Reset</value>
+    <value>Reset Quoti</value>
   </data>
   <data name="Additional_WeeklyReset" xml:space="preserve">
-    <value>Weekly Reset</value>
+    <value>Reset Hebdo</value>
   </data>
   <data name="DutyRoulette_IncompleteTask" xml:space="preserve">
-    <value>Incomplete Task</value>
+    <value>Tâche incomplète</value>
   </data>
   <data name="DutyRoulette_CompleteTask" xml:space="preserve">
-    <value>Complete Task</value>
+    <value>Tâche complète</value>
   </data>
   <data name="TodoOverlay_NewPanel" xml:space="preserve">
-    <value>New Panel</value>
+    <value>Nouveau panneau</value>
   </data>
   <data name="WondrousTails_StickerAlreadyAvailable" xml:space="preserve">
-    <value>Sticker is already available for this duty, be sure to claim it!</value>
+    <value>L'autocollant correspondant à cette mission est déjà disponible, n'oubliez pas de le réclamer !</value>
   </data>
   <data name="WondrousTails_CompletingDutyReward" xml:space="preserve">
-    <value>Completing this duty will reward you with a sticker</value>
+    <value>Si vous accomplissez cette mission, vous recevrez un autocollant en récompense</value>
   </data>
   <data name="WondrousTails_RerollsAvailable" xml:space="preserve">
-    <value>Rerolls Available</value>
+    <value>Recollages disponibles</value>
   </data>
   <data name="WondrousTails_StickersClaimable" xml:space="preserve">
-    <value>Stickers Claimable</value>
+    <value>Autocollants à réclamer</value>
   </data>
   <data name="WondrousTails_Duty" xml:space="preserve">
-    <value>Wondrous Tails Duty</value>
+    <value>Mission du carnet de Khloe</value>
   </data>
   <data name="GenericDataNode_UnknownStatus" xml:space="preserve">
-    <value>Unknown Status</value>
+    <value>État inconnu</value>
   </data>
   <data name="SearchNode_Placeholder" xml:space="preserve">
-    <value>Search . . .</value>
+    <value>Recherche...</value>
   </data>
   <data name="DutyRoulette_DutyFinderTooltip" xml:space="preserve">
-    <value>[DailyDuty] Duty Roulette Feature</value>
+    <value>[DailyDuty] Fonctionnalité de l'outil de mission</value>
   </data>
   <data name="WondrousTails_DutyFinderTooltip" xml:space="preserve">
-    <value>[DailyDuty] Wondrous Tails Feature</value>
+    <value>[DailyDuty] Fonctionnalité du carnet de Khloe</value>
   </data>
   <data name="ModuleManager_LoadFailed" xml:space="preserve">
-    <value>Failed to load, this module has been disabled.</value>
+    <value>Échec du chargement : ce module a été désactivé.</value>
   </data>
   <data name="ModuleManager_CriticalError" xml:space="preserve">
-    <value>Critical Error: Module failed to load, and errored again while unloading.</value>
+    <value>Erreur critique : le module n'a pas pu être chargé et une nouvelle erreur s'est produite lors de son déchargement.</value>
   </data>
   <data name="DutyFinderEnhancements_NextReset" xml:space="preserve">
-        <value>[DailyDuty] Time Until Next Reset</value>
+        <value>[DailyDuty] Temps restant avant la prochaine réinitialisation</value>
     </data>
 </root>
