@@ -381,16 +381,16 @@
     <value>Sélection Alerte Suivie Outil Mission</value>
   </data>
   <data name="CustomDelivery_AllowanceAmount" xml:space="preserve">
-    <value>Quantité de commande</value>
+    <value>Quantité de livraison</value>
   </data>
   <data name="CustomDelivery_WarningTrigger" xml:space="preserve">
     <value>Déclencheur d'alerte</value>
   </data>
   <data name="CustomDelivery_AllowancesRemaining" xml:space="preserve">
-    <value>Commandes restantes</value>
+    <value>Livraisons restantes</value>
   </data>
   <data name="CustomDelivery_AllowancesNotUpdated" xml:space="preserve">
-    <value>Commandes non à jour</value>
+    <value>Livraisons non à jour</value>
   </data>
   <data name="DomanEnclave_CurrentMaxAllowance" xml:space="preserve">
     <value>Don actuel maximum</value>
@@ -543,7 +543,7 @@
     <value>Date limite</value>
   </data>
   <data name="WondrousTails_SecondChancePoints" xml:space="preserve">
-    <value>Points de seconde chance</value>
+    <value>Coup de pouce</value>
   </data>
   <data name="WondrousTails_PlacedStickers" xml:space="preserve">
     <value>Autocollants placés</value>
