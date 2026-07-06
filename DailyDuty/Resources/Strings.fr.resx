@@ -54,7 +54,7 @@
     <value>Améliorations de l'outil de mission</value>
   </data>
   <data name="DutyRoulette_DisplayName" xml:space="preserve">
-    <value>Missions quotidiennes</value>
+    <value>Missions aléatoires</value>
   </data>
   <data name="FashionReport_DisplayName" xml:space="preserve">
     <value>Revue de mode</value>
@@ -570,7 +570,7 @@
     <value>Commande(s) spéciale(s) restante(s) pour atteindre le seuil</value>
   </data>
   <data name="StatusMessages_RouletteIncomplete" xml:space="preserve">
-    <value>Mission(s) quotidienne(s) incomplète(s)</value>
+    <value>Mission(s) aléatoire(s) incomplète(s)</value>
   </data>
   <data name="StatusMessages_UnrealTrialIncomplete" xml:space="preserve">
     <value>Défi irréel incomplet</value>
