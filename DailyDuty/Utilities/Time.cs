@@ -64,6 +64,9 @@ public static class Time {
             // Cloud
             7 => NextDayOfWeek(DayOfWeek.Sunday, 2),
 
+            // China
+            5 => NextDayOfWeek(DayOfWeek.Saturday, 13),
+
             // Unknown Region
             _ => throw new DatacenterException(),
         };
