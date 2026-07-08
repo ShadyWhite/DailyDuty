@@ -159,7 +159,7 @@ public unsafe class TodoPanelNode : OverlayNode {
             .OfType<ModuleBase>()
             .Where(module => module is { ModuleStatus: CompletionStatus.Incomplete or CompletionStatus.ResultsAvailable, IsEnabled: true })
             .OrderBy(module => module.Name)
-            .ToList();
+            .ToHashSet();
 
         var shouldHideInDuties = ModuleTodoOverlayConfig.HideInDuties && Services.Condition.IsBoundByDuty;
         var shouldHideInQuestEvent = ModuleTodoOverlayConfig.HideDuringQuests && Services.Condition.IsInCutsceneOrQuestEvent;
@@ -185,11 +185,7 @@ public unsafe class TodoPanelNode : OverlayNode {
         titleText.String = Config.Label;
 
         foreach (var entry in warningList.GetNodes<TodoListEntryNode>()) {
-            var isEnabled = entry.LoadedModule.State is LoadedState.Enabled;
-            var isTracked = Config.Modules.Contains(entry.Module.ModuleInfo.DisplayName);
-            var isIncomplete = entry.Module.ModuleStatus is CompletionStatus.Incomplete;
-
-            entry.IsVisible = isEnabled && isTracked && isIncomplete;
+            entry.IsVisible = warningModules.Contains(entry.Module);
             entry.TextColor = Config.TextColor;
             entry.TextOutlineColor = Config.OutlineColor;
 
