@@ -61,8 +61,17 @@ public static class Time {
             // Australia
             4 => NextDayOfWeek(DayOfWeek.Saturday, 9),
 
+            // China
+            5 => NextDayOfWeek(DayOfWeek.Saturday, 13),
+
+            // Korea
+            6 => NextDayOfWeek(DayOfWeek.Saturday, 12),
+
             // Cloud
             7 => NextDayOfWeek(DayOfWeek.Sunday, 2),
+
+            // Taiwan
+            8 => NextDayOfWeek(DayOfWeek.Saturday, 13),
 
             // Unknown Region
             _ => throw new DatacenterException(),
