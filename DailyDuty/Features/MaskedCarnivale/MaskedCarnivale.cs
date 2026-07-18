@@ -8,6 +8,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
@@ -30,8 +31,8 @@ public class MaskedCarnivale : Module<MaskedCarnivaleConfig, MaskedCarnivaleData
         => MaskedCarnivaleMigration.Migrate(objectData);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.RegisterListener(AddonEvent.PostSetup, "AOZContentResult", AozContentResultPostSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().RegisterListener(AddonEvent.PostSetup, "AOZContentResult", AozContentResultPostSetup);
         });
 
         // Fix for configs that don't have these data entries, newly generated configs will default with them.
@@ -41,8 +42,8 @@ public class MaskedCarnivale : Module<MaskedCarnivaleConfig, MaskedCarnivaleData
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.UnregisterListener(AozContentResultPostSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().UnregisterListener(AozContentResultPostSetup);
         });
     }
 
@@ -126,5 +127,5 @@ public class MaskedCarnivale : Module<MaskedCarnivaleConfig, MaskedCarnivaleData
     private IEnumerable<string> GetIncompleteTasks()
         => ModuleConfig.TrackedTasks
             .Where(job => !ModuleData.TaskData[(int)job])
-            .Select(job => Services.DataManager.GetExcelSheet<Addon>().GetRow(job).Text.ToString());
+            .Select(job => IDataManager.Get().GetExcelSheet<Addon>().GetRow(job).Text.ToString());
 }

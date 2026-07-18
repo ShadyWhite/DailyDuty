@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using DailyDuty.Enums;
 using DailyDuty.Windows;
+using Dalamud.Plugin.Services;
 using Newtonsoft.Json.Linq;
 using Data = DailyDuty.Utilities.Data;
 
@@ -53,7 +54,7 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
 
                 // Note if MigrationResult is null, the users old config will be nuked.
                 if (jObject.ContainsKey("ModuleEnabled") && MigrateConfig(jObject) is { } migrationResult) {
-                    Services.PluginLog.Debug($"[{ModuleInfo.DisplayName}] Successfully migrated config file");
+                    IPluginLog.Get().Debug($"[{ModuleInfo.DisplayName}] Successfully migrated config file");
 
                     ModuleConfig = migrationResult;
                     ModuleConfig.FileName = ModuleInfo.FileName;
@@ -63,7 +64,7 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
             }
         }
         catch (Exception e) {
-            Services.PluginLog.Error(e, $"Failed to migrate config file for {ModuleInfo.DisplayName}");
+            IPluginLog.Get().Error(e, $"Failed to migrate config file for {ModuleInfo.DisplayName}");
         }
 
         return false;
@@ -115,7 +116,7 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
         if (!ModuleConfig.OnZoneChangeMessage) return;
         if (ModuleInfo.Type is ModuleType.GeneralFeatures) return;
         if (ModuleStatus is not (CompletionStatus.Incomplete or CompletionStatus.Unknown)) return;
-        if (Services.Condition.IsBoundByDuty) return;
+        if (ICondition.Get().IsBoundByDuty) return;
 
         PrintStatusMessage(StatusMessageType.ZoneChanged);
     }
@@ -124,7 +125,7 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
         if (!ModuleConfig.OnLoginMessage) return;
         if (ModuleInfo.Type is ModuleType.GeneralFeatures) return;
         if (ModuleStatus is not (CompletionStatus.Incomplete or CompletionStatus.Unknown)) return;
-        if (Services.Condition.IsBoundByDuty) return;
+        if (ICondition.Get().IsBoundByDuty) return;
 
         PrintStatusMessage(StatusMessageType.Login);
     }
@@ -141,7 +142,7 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
         }
 
         var nextReset = GetNextResetDateTime();
-        Services.PluginLog.Debug($"Resetting {ModuleInfo.DisplayName}, next reset at {nextReset.ToLocalTime().GetDisplayString()}");
+        IPluginLog.Get().Debug($"Resetting {ModuleInfo.DisplayName}, next reset at {nextReset.ToLocalTime().GetDisplayString()}");
 
         ModuleData.NextReset = nextReset;
         ModuleData.Save();
@@ -151,10 +152,10 @@ public abstract class Module<T, TU> : ModuleBase where T : ConfigBase, new() whe
     }
 
     private void PrintStatusMessage(StatusMessageType type) {
-        Services.PluginLog.Debug($"[{ModuleInfo.DisplayName}] Sending {type.ToString()} Message");
+        IPluginLog.Get().Debug($"[{ModuleInfo.DisplayName}] Sending {type.ToString()} Message");
 
-        Services.Framework.RunSafely(() => {
-            Services.ChatGui.PrintPayloadMessage(
+        IFramework.Get().RunSafely(() => {
+            IChatGui.Get().PrintPayloadMessage(
                 ModuleConfig.MessageChatChannel,
                 ModuleStatusMessage.PayloadId,
                 ModuleInfo.DisplayName,

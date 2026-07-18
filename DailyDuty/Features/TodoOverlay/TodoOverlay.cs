@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.UiOverlay;
@@ -44,14 +45,14 @@ public class TodoOverlay : FeatureBase {
     protected override async Task OnFeatureEnable() {
         panelNodes = [];
 
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             overlayController = new OverlayController();
             RebuildPanels();
         });
     }
 
     protected override async Task OnFeatureDisable() {
-        await Services.Framework.RunSafely(() => overlayController?.Dispose());
+        await IFramework.Get().RunSafely(() => overlayController?.Dispose());
         overlayController = null;
 
         panelNodes?.Clear();
@@ -60,7 +61,7 @@ public class TodoOverlay : FeatureBase {
 
     protected override void OnFeatureUpdate() {
         if (ModuleTodoOverlayConfig.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} config");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} config");
             ModuleTodoOverlayConfig.Save();
         }
     }

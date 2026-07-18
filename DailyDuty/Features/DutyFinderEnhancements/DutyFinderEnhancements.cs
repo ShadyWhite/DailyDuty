@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
@@ -52,7 +53,7 @@ public class DutyFinderEnhancements : FeatureBase {
             };
         }
 
-        await Services.Framework.RunSafely(addonController.Enable);
+        await IFramework.Get().RunSafely(addonController.Enable);
     }
 
     private unsafe void FinalizeContentsFinder(AddonContentsFinder* _) {
@@ -104,7 +105,7 @@ public class DutyFinderEnhancements : FeatureBase {
     }
 
     protected override async Task OnFeatureDisable() {
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             addonController?.Dispose();
             timerTextNode?.Dispose();
         });
@@ -115,7 +116,7 @@ public class DutyFinderEnhancements : FeatureBase {
 
     protected override void OnFeatureUpdate() {
         if (ModuleDutyFinderEnhancementsConfig.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} config");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} config");
             ModuleDutyFinderEnhancementsConfig.Save();
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using DailyDuty.Enums;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
@@ -24,7 +25,7 @@ public unsafe class PayloadController : IDisposable {
 
     public void Dispose() {
         foreach (var registeredPayload in payloads) {
-            Services.ChatGui.RemoveChatLinkHandler((uint)registeredPayload.Key);
+            IChatGui.Get().RemoveChatLinkHandler((uint)registeredPayload.Key);
         }
     }
 
@@ -82,14 +83,14 @@ public unsafe class PayloadController : IDisposable {
     }
 
     private static void OpenDutyFinderAllianceRaid() {
-        var currentAllianceRaid = Services.DataManager.LimitedAllianceRaidDuties.LastOrDefault();
+        var currentAllianceRaid = IDataManager.Get().LimitedAllianceRaidDuties.LastOrDefault();
 
         AgentContentsFinder.Instance()->OpenRegularDuty(currentAllianceRaid.RowId);
         ClearDutyFinderSelection();
     }
 
     private static void OpenDutyFinderRaid() {
-        var currentRaid = Services.DataManager.LimitedNormalRaidDuties.LastOrDefault();
+        var currentRaid = IDataManager.Get().LimitedNormalRaidDuties.LastOrDefault();
 
         AgentContentsFinder.Instance()->OpenRegularDuty(currentRaid.RowId);
         ClearDutyFinderSelection();
@@ -109,7 +110,7 @@ public unsafe class PayloadController : IDisposable {
     }
 
     private static DalamudLinkPayload AddHandler(PayloadId payloadId, Action<uint, SeString> action)
-        => Services.ChatGui.AddChatLinkHandler((uint)payloadId, action);
+        => IChatGui.Get().AddChatLinkHandler((uint)payloadId, action);
 
     private static void ClearDutyFinderSelection() {
         using var returnValue = new RentedAtkValues(1);
@@ -121,9 +122,9 @@ public unsafe class PayloadController : IDisposable {
     }
 
     private static void Teleport(uint id) {
-        if (!Services.DataManager.GetExcelSheet<Aetheryte>().TryGetRow(id, out var aetheryte)) return;
+        if (!IDataManager.Get().GetExcelSheet<Aetheryte>().TryGetRow(id, out var aetheryte)) return;
 
-        Services.ChatGui.PrintTaggedMessage($"{Strings.Teleport_TeleportingTo} {aetheryte.PlaceName.Value.Name.ToString()}", Strings.Teleport_Teleport);
+        IChatGui.Get().PrintTaggedMessage($"{Strings.Teleport_TeleportingTo} {aetheryte.PlaceName.Value.Name.ToString()}", Strings.Teleport_Teleport);
         Telepo.Instance()->Teleport(id, 0);
     }
 }

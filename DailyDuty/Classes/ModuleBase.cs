@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using KamiToolKit.BaseTypes;
@@ -56,12 +57,12 @@ public abstract unsafe class ModuleBase : FeatureBase {
         }
 
         if (ConfigBase.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} config");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} config");
             ConfigBase.Save();
         }
 
         if (DataBase.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} data");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} data");
             DataBase.Save();
         }
 

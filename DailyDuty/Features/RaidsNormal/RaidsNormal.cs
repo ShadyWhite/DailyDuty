@@ -8,6 +8,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Inventory;
 using Dalamud.Game.Inventory.InventoryEventArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Lumina.Excel.Sheets;
@@ -32,10 +33,10 @@ public unsafe class RaidsNormal : Module<RaidsNormalConfig, RaidsNormalData> {
         => RaidsNormalMigration.Migrate(objectData);
 
     protected override Task OnModuleEnable() {
-        Services.GameInventory.ItemAdded += OnItemEvent;
-        Services.GameInventory.ItemChanged += OnItemEvent;
+        IGameInventory.Get().ItemAdded += OnItemEvent;
+        IGameInventory.Get().ItemChanged += OnItemEvent;
 
-        validNormalRaids = Services.DataManager.LimitedNormalRaidDuties.Select(cfc => cfc.RowId).ToList();
+        validNormalRaids = IDataManager.Get().LimitedNormalRaidDuties.Select(cfc => cfc.RowId).ToList();
 
         UpdateTrackedTasks();
 
@@ -43,8 +44,8 @@ public unsafe class RaidsNormal : Module<RaidsNormalConfig, RaidsNormalData> {
     }
 
     protected override Task OnModuleDisable() {
-        Services.GameInventory.ItemAdded -= OnItemEvent;
-        Services.GameInventory.ItemChanged -= OnItemEvent;
+        IGameInventory.Get().ItemAdded -= OnItemEvent;
+        IGameInventory.Get().ItemChanged -= OnItemEvent;
 
         validNormalRaids?.Clear();
         validNormalRaids = null;
@@ -101,10 +102,10 @@ public unsafe class RaidsNormal : Module<RaidsNormalConfig, RaidsNormalData> {
         if (!ModuleConfig.TrackedTasks.ContainsKey(currentDuty)) return;
 
         // If we can't get the exd data for this item, return
-        var item = Services.DataManager.GetExcelSheet<Item>().GetRow(data.Item.ItemId);
+        var item = IDataManager.Get().GetExcelSheet<Item>().GetRow(data.Item.ItemId);
         if (item.RowId is 0) return;
 
-        Services.PluginLog.Debug($"InventoryEvent: {type}: {item.Name}");
+        IPluginLog.Get().Debug($"InventoryEvent: {type}: {item.Name}");
 
         // If the item is a limited type that we care about, mark as completed
         switch (item.ItemUICategory.RowId) {
@@ -171,5 +172,5 @@ public unsafe class RaidsNormal : Module<RaidsNormalConfig, RaidsNormalData> {
         => ModuleConfig.TrackedTasks
             .Where(task => task.Value)
             .Where(task => !ModuleData.TaskStatus[task.Key])
-            .Select(task => Services.DataManager.GetExcelSheet<ContentFinderCondition>().GetRow(task.Key).Name.ToString());
+            .Select(task => IDataManager.Get().GetExcelSheet<ContentFinderCondition>().GetRow(task.Key).Name.ToString());
 }

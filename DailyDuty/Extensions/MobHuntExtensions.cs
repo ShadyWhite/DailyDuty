@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 
@@ -12,7 +13,7 @@ public static class MobHuntExtensions {
 
             if (availableMarkId != obtainedMarkId) return false;
 
-            var orderData = Services.DataManager.GetExcelSheet<MobHuntOrderType>().GetRow(rowId);
+            var orderData = IDataManager.Get().GetExcelSheet<MobHuntOrderType>().GetRow(rowId);
             var targetRow = orderData.OrderStart.RowId + huntStruct.ObtainedMarkId[rowId] - 1;
 
             return orderData switch {
@@ -23,13 +24,13 @@ public static class MobHuntExtensions {
         }
 
         private bool IsEliteMarkComplete(uint targetRow, int markId) {
-            var eliteTargetInfo = Services.DataManager.GetSubrowExcelSheet<MobHuntOrder>().GetSubrow(targetRow, 0);
+            var eliteTargetInfo = IDataManager.Get().GetSubrowExcelSheet<MobHuntOrder>().GetSubrow(targetRow, 0);
             return huntStruct.CurrentKills[markId][0] == eliteTargetInfo.NeededKills;
         }
 
         private bool IsNormalMarkComplete(uint targetRow, int markId) {
             foreach (var index in Enumerable.Range(0, 5)) {
-                var huntData = Services.DataManager.GetSubrowExcelSheet<MobHuntOrder>().GetSubrow(targetRow, (ushort)index);
+                var huntData = IDataManager.Get().GetSubrowExcelSheet<MobHuntOrder>().GetSubrow(targetRow, (ushort)index);
 
                 if (huntStruct.CurrentKills[markId][index] != huntData.NeededKills) return false;
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using DailyDuty.Classes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -110,7 +111,7 @@ public unsafe class DutyRouletteDutyFinderController : IDisposable {
     private void UpdateElementMethod(AddonContentsFinder* addonContentsFinder, ContentsFinderListItem listItem) {
         if (listItem.ContentType is not ContentsType.Roulette) return;
 
-        var rouletteInfo = Services.DataManager
+        var rouletteInfo = IDataManager.Get()
             .GetExcelSheet<ContentRoulette>()
             .GetRow(listItem.GetContentId().Id);
 

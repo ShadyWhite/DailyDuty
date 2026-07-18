@@ -1,4 +1,5 @@
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
@@ -33,7 +34,7 @@ public class RaidsNormalConfigNode(RaidsNormal module) : ConfigNodeBase<RaidsNor
         }
 
         foreach (var (raid, raidStatus) in module.ModuleConfig.TrackedTasks) {
-            if (!Services.DataManager.GetExcelSheet<ContentFinderCondition>().TryGetRow(raid, out var row)) continue;
+            if (!IDataManager.Get().GetExcelSheet<ContentFinderCondition>().TryGetRow(raid, out var row)) continue;
 
             layoutNode.AddNode([
                 new CheckboxNode {

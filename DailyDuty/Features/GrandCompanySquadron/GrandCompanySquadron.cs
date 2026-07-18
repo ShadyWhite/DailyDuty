@@ -9,6 +9,7 @@ using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Agent;
 using Dalamud.Game.Agent.AgentArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -33,16 +34,16 @@ public class GrandCompanySquadron : Module<ConfigBase, GrandCompanySquadronData>
     public override DataNodeBase DataNode => new GrandCompanySquadronDataNode(this);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.RegisterListener(AddonEvent.PreFinalize, "GcArmyExpeditionResult", GcArmyExpeditionResultPreFinalize);
-            Services.AgentLifecycle.RegisterListener(AgentEvent.PreReceiveEvent, AgentId.GcArmyExpedition, AgentGcArmyExpeditionReceiveEvent);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreFinalize, "GcArmyExpeditionResult", GcArmyExpeditionResultPreFinalize);
+            IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.GcArmyExpedition, AgentGcArmyExpeditionReceiveEvent);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.UnregisterListener(GcArmyExpeditionResultPreFinalize);
-            Services.AgentLifecycle.UnregisterListener(AgentGcArmyExpeditionReceiveEvent);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().UnregisterListener(GcArmyExpeditionResultPreFinalize);
+            IAgentLifecycle.Get().UnregisterListener(AgentGcArmyExpeditionReceiveEvent);
         });
     }
 
@@ -83,12 +84,12 @@ public class GrandCompanySquadron : Module<ConfigBase, GrandCompanySquadronData>
         if (!args.Addon.AtkValues.ElementAt(4).TryGet(out ReadOnlySeString missionName)) return;
         if (!args.Addon.AtkValues.ElementAt(2).TryGet(out int missionSuccessful) || missionSuccessful is not 1) return;
 
-        var missionData = Services.DataManager.GetExcelSheet<GcArmyExpedition>()
+        var missionData = IDataManager.Get().GetExcelSheet<GcArmyExpedition>()
             .FirstOrNull(entry => entry.Name == missionName);
 
         // Logging in-case this breaks for whatever reason
         if (missionData is null) {
-            Services.PluginLog.Debug($"Failed to find GcArmyExpedition, {missionName}");
+            IPluginLog.Get().Debug($"Failed to find GcArmyExpedition, {missionName}");
         }
 
         if (missionData?.GcArmyExpeditionType.RowId is not 3) return; // Completed Non-Priority Mission
@@ -119,7 +120,7 @@ public class GrandCompanySquadron : Module<ConfigBase, GrandCompanySquadronData>
             return;
         }
 
-        var missionData = Services.DataManager.GetExcelSheet<GcArmyExpedition>().GetRow(sceneData[2]);
+        var missionData = IDataManager.Get().GetExcelSheet<GcArmyExpedition>().GetRow(sceneData[2]);
         var isPriorityMission = missionData.GcArmyExpeditionType.RowId is 3;
 
         if (isPriorityMission) {

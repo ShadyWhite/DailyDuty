@@ -2,6 +2,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.Classes;
@@ -139,7 +140,7 @@ public class ModuleOptionNode : TreeListItemNode<LoadedModule>, ITreeListItemNod
         configButtonNode.IsEnabled = ItemData.State is LoadedState.Enabled;
         configButtonNode.IsVisible = ItemData.FeatureBase.OpenConfigAction is not null;
 
-        await Services.Framework.RunSafely(() => OnClick?.Invoke(this));
+        await IFramework.Get().RunSafely(() => OnClick?.Invoke(this));
 
         if (ItemData.FeatureBase.OpenConfigAction is not null) {
             configButtonNode.IsVisible = true;

@@ -5,6 +5,7 @@ using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 
@@ -42,11 +43,11 @@ public unsafe class TreasureMap : Module<ConfigBase, TreasureMapData> {
         => ModuleData.NextReset == DateTime.MaxValue ? CompletionStatus.Incomplete : CompletionStatus.Complete;
 
     protected override void OnModuleUpdate() {
-        if (Services.Condition[ConditionFlag.ExecutingGatheringAction] && !gatheringStarted) {
+        if (ICondition.Get()[ConditionFlag.ExecutingGatheringAction] && !gatheringStarted) {
             gatheringStarted = true;
             OnGatheringStart();
         }
-        else if (!Services.Condition[ConditionFlag.ExecutingGatheringAction] && gatheringStarted) {
+        else if (!ICondition.Get()[ConditionFlag.ExecutingGatheringAction] && gatheringStarted) {
             gatheringStarted = false;
             OnGatheringStop();
         }
@@ -71,7 +72,7 @@ public unsafe class TreasureMap : Module<ConfigBase, TreasureMapData> {
     }
 
     private static IEnumerable<uint> GetInventoryTreasureMaps() {
-        foreach (var treasureMap in Services.DataManager.GetExcelSheet<TreasureHuntRank>().Where(map => map.ItemName.RowId is not 0)) {
+        foreach (var treasureMap in IDataManager.Get().GetExcelSheet<TreasureHuntRank>().Where(map => map.ItemName.RowId is not 0)) {
             if (IsItemInInventory(treasureMap.ItemName.RowId)) {
                 yield return treasureMap.ItemName.RowId;
             }

@@ -5,6 +5,7 @@ using System.Linq;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json.Linq;
@@ -82,5 +83,5 @@ public unsafe class GrandCompanyProvision : Module<GrandCompanyProvisionConfig, 
         => ModuleConfig.TrackedClasses
             .Where(pair => pair.Value)
             .Where(job => !ModuleData.ClassJobStatus[job.Key])
-            .Select(job => Services.DataManager.GetExcelSheet<ClassJob>().GetRow(job.Key).NameEnglish.ToString());
+            .Select(job => IDataManager.Get().GetExcelSheet<ClassJob>().GetRow(job.Key).NameEnglish.ToString());
 }

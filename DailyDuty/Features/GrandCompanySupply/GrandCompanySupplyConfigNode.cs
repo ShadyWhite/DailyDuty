@@ -1,4 +1,5 @@
 ﻿using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
 using Lumina.Excel.Sheets;
@@ -15,7 +16,7 @@ public class GrandCompanySupplyConfigNode(GrandCompanySupply module) : ConfigNod
         };
 
         foreach (var (job, _) in module.ModuleData.ClassJobStatus) {
-            var classJob = Services.DataManager.GetExcelSheet<ClassJob>().GetRow(job);
+            var classJob = IDataManager.Get().GetExcelSheet<ClassJob>().GetRow(job);
 
             layoutNode.AddNode(new CheckboxNode {
                 String = classJob.NameEnglish.ToString(),

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dalamud.Plugin.Services;
 using KamiToolKit.Nodes;
 using Lumina.Excel;
 
@@ -46,7 +47,7 @@ public class LuminaMultiSelectNode<T> : ResNode where T : struct, IExcelRow<T> {
         set {
             field = value;
 
-            foreach (var option in Services.DataManager.GetExcelSheet<T>().Where(option => FilterFunc?.Invoke(option) ?? true)) {
+            foreach (var option in IDataManager.Get().GetExcelSheet<T>().Where(option => FilterFunc?.Invoke(option) ?? true)) {
                 if (GetLabelFunc?.Invoke(option) is not { Length: > 0 } name) continue;
 
                 scrollingListNode.ContentNode.AddNode(new CheckboxNode {

@@ -8,6 +8,7 @@ using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using DailyDuty.Windows;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.UiOverlay;
@@ -55,7 +56,7 @@ public class TimersOverlay : FeatureBase {
             timerNodes.Add(module, null);
         }
 
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             overlayController = new OverlayController();
         });
 
@@ -67,7 +68,7 @@ public class TimersOverlay : FeatureBase {
         System.ModuleManager.OnFeatureEnabled -= RebuildTimers;
         System.ModuleManager.OnFeatureDisabled -= RebuildTimers;
 
-        await Services.Framework.RunSafely(() => overlayController?.Dispose());
+        await IFramework.Get().RunSafely(() => overlayController?.Dispose());
         overlayController = null;
         timerNodes?.Clear();
         timerNodes = null;
@@ -78,7 +79,7 @@ public class TimersOverlay : FeatureBase {
 
     protected override void OnFeatureUpdate() {
         if (ModuleTimersOverlayConfig.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} config");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} config");
             ModuleTimersOverlayConfig.Save();
         }
     }
@@ -119,7 +120,7 @@ public class TimersOverlay : FeatureBase {
 
     private async Task RebuildTimersTask() {
         if (!IsEnabled) {
-            await Services.Framework.RunSafely(() => overlayController?.RemoveAllNodes());
+            await IFramework.Get().RunSafely(() => overlayController?.RemoveAllNodes());
 
             foreach (var (key, _) in timerNodes ?? []) {
                 timerNodes?[key] = null;
@@ -131,7 +132,7 @@ public class TimersOverlay : FeatureBase {
         if (timerNodes is null) return;
         if (overlayController is null) return;
 
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             Vector2 screenSize;
             unsafe {
                 screenSize = AtkStage.Instance()->ScreenSize;

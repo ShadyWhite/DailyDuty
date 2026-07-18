@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DailyDuty.CustomNodes;
 using DailyDuty.ListItemNodes;
+using Dalamud.Plugin.Services;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
 using Lumina.Excel.Sheets;
@@ -13,7 +14,7 @@ public class HuntMarksDailyDataNode(HuntMarksDaily module) : DataNodeBase<HuntMa
 
     protected override NodeBase BuildDataNode()
         => listNode = new ListNode<MobHuntOrderType, MobHuntOrderTypeListItemNode> {
-            OptionsList = Services.DataManager.GetExcelSheet<MobHuntOrderType>()
+            OptionsList = IDataManager.Get().GetExcelSheet<MobHuntOrderType>()
                 .Where(row => row is { RowId: not 0, EventItem.ValueNullable.Name.ByteLength: > 0, Type: 1 })
                 .ToList(),
             ItemSpacing = 1.0f,

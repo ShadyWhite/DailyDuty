@@ -1,6 +1,7 @@
 using DailyDuty.Utilities;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Dalamud.Plugin.Services;
 
 namespace DailyDuty.Interfaces;
 
@@ -17,7 +18,7 @@ public abstract class Savable {
         SavePending = false;
 
         if (FileName == string.Empty) {
-            Services.PluginLog.Error("Tried to save a config with no file name set");
+            IPluginLog.Get().Error("Tried to save a config with no file name set");
             return;
         }
 

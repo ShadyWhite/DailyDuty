@@ -4,6 +4,7 @@ using System.Linq;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
@@ -56,7 +57,7 @@ public unsafe class HuntMarksWeekly : Module<HuntMarksWeeklyConfig, DataBase> {
         var result = string.Empty;
 
         foreach (var warningId in ModuleConfig.TrackedHuntMarks.Where(huntBill => !MobHunt.Instance()->IsBillComplete((byte)huntBill))) {
-            if (!Services.DataManager.GetExcelSheet<MobHuntOrderType>().TryGetRow(warningId, out var contentNote)) continue;
+            if (!IDataManager.Get().GetExcelSheet<MobHuntOrderType>().TryGetRow(warningId, out var contentNote)) continue;
 
             result += contentNote.EventItem.ValueNullable?.Name.ToString() + "\n";
         }

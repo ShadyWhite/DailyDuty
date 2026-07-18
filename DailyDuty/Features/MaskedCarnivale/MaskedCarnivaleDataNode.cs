@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Enums;
@@ -20,7 +21,7 @@ public class MaskedCarnivaleDataNode(MaskedCarnivale module) : DataNodeBase<Mask
         };
 
         foreach (var index in Enumerable.Range(12447, 3)) {
-            var text = Services.DataManager.GetExcelSheet<Addon>().GetRow((uint)index).Text.ToString();
+            var text = IDataManager.Get().GetExcelSheet<Addon>().GetRow((uint)index).Text.ToString();
 
             TextNode statusNode;
 

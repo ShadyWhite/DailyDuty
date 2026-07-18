@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Enums;
@@ -19,7 +20,7 @@ public class GrandCompanySupplyDataNode(GrandCompanySupply module) : DataNodeBas
         };
 
         foreach (var (job, _) in module.ModuleData.ClassJobStatus) {
-            var classJob = Services.DataManager.GetExcelSheet<ClassJob>().GetRow(job);
+            var classJob = IDataManager.Get().GetExcelSheet<ClassJob>().GetRow(job);
 
             TextNode statusNode;
 

@@ -1,4 +1,5 @@
-﻿using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+﻿using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.Classes;
 using Lumina.Excel.Sheets;
@@ -19,5 +20,5 @@ public unsafe class ContentsFinderListItem : ListItemData {
         => GetContentId().ContentType;
 
     public ContentFinderCondition ContentsFinderCondition
-        => Services.DataManager.GetExcelSheet<ContentFinderCondition>().GetRow(GetContentId().Id);
+        => IDataManager.Get().GetExcelSheet<ContentFinderCondition>().GetRow(GetContentId().Id);
 }

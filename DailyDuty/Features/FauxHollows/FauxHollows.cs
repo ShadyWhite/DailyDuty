@@ -6,6 +6,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Plugin.Services;
 
 namespace DailyDuty.Features.FauxHollows;
 
@@ -21,14 +22,14 @@ public class FauxHollows : Module<FauxHollowsConfig, FauxHollowsData> {
     public override ConfigNodeBase ConfigNode => new FauxHollowsConfigNode(this);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "WeeklyPuzzle", WeeklyPuzzlePreSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "WeeklyPuzzle", WeeklyPuzzlePreSetup);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.UnregisterListener(WeeklyPuzzlePreSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().UnregisterListener(WeeklyPuzzlePreSetup);
         });
     }
 

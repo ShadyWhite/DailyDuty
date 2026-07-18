@@ -6,6 +6,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 
@@ -22,14 +23,14 @@ public class MiniCactpot : Module<ConfigBase, MiniCactpotData> {
     public override DataNodeBase DataNode => new MiniCactpotDataNode(this);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "LotteryDaily", LotteryDailyPreSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "LotteryDaily", LotteryDailyPreSetup);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.UnregisterListener(LotteryDailyPreSetup);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().UnregisterListener(LotteryDailyPreSetup);
         });
     }
 

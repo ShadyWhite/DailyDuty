@@ -6,6 +6,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Agent;
 using Dalamud.Game.Agent.AgentArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 
@@ -23,14 +24,14 @@ public class JumboCactpot : Module<ConfigBase, JumboCactpotData> {
     private int ticketData = -1;
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AgentLifecycle.RegisterListener(AgentEvent.PreReceiveEvent, AgentId.LotteryWeekly, OnLotteryEvent);
+        await IFramework.Get().RunSafely(() => {
+            IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.LotteryWeekly, OnLotteryEvent);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AgentLifecycle.UnregisterListener(OnLotteryEvent);
+        await IFramework.Get().RunSafely(() => {
+            IAgentLifecycle.Get().UnregisterListener(OnLotteryEvent);
         });
     }
 

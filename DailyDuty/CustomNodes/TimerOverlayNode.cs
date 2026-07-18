@@ -4,6 +4,7 @@ using System.Numerics;
 using DailyDuty.Classes;
 using DailyDuty.Features.TimersOverlay;
 using Dalamud.Interface;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Enums;
@@ -107,8 +108,8 @@ public sealed class TimerOverlayNode : OverlayNode {
         moduleNameNode.IsVisible = TimerTimersOverlayConfig.ShowLabel;
         timeRemainingNode.IsVisible = TimerTimersOverlayConfig.ShowCountdownText;
 
-        var shouldHide = TimerTimersOverlayConfig.HideInDuties && Services.Condition.IsBoundByDuty;
-        shouldHide |= TimerTimersOverlayConfig.HideInQuestEvents && Services.Condition.IsInQuestEvent;
+        var shouldHide = TimerTimersOverlayConfig.HideInDuties && ICondition.Get().IsBoundByDuty;
+        shouldHide |= TimerTimersOverlayConfig.HideInQuestEvents && ICondition.Get().IsInQuestEvent;
 
         IsVisible = !shouldHide;
     }

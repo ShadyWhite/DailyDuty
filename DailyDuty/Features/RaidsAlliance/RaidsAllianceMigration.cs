@@ -12,7 +12,7 @@ public static class RaidsAllianceMigration {
         OnLoginMessage = data["OnLoginMessage"]?.ToObject<bool>() ?? true,
         OnZoneChangeMessage = data["OnZoneChangeMessage"]?.ToObject<bool>() ?? true,
         ResetMessage = data["ResetMessage"]?.ToObject<bool>() ?? true,
-        MessageChatChannel = data["MessageChatChannel"]?.ToObject<XivChatType>() ?? Services.PluginInterface.GeneralChatType,
+        MessageChatChannel = data["MessageChatChannel"]?.ToObject<XivChatType>() ?? DailyDutyPlugin.PluginInterface.GeneralChatType,
         CustomStatusMessage = data["CustomStatusMessage"]?.ToObject<string>() ?? string.Empty,
         CustomResetMessage = data["CustomResetMessage"]?.ToObject<string>() ?? string.Empty,
         Suppressed = data["Suppressed"]?.ToObject<bool>() ?? false,

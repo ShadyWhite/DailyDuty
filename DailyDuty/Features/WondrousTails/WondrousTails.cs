@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
@@ -31,13 +32,13 @@ public class WondrousTails : Module<WondrousTailsConfig, DataBase> {
     protected override async Task OnModuleEnable() {
         dutyController = new WondrousTailsDutyController(this);
 
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             contentsFinderController = new WondrousTailsContentsFinderController(this);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             contentsFinderController?.Dispose();
         });
         contentsFinderController = null;
@@ -79,19 +80,19 @@ public class WondrousTails : Module<WondrousTailsConfig, DataBase> {
 
         const int idyllshireTerritoryType = 478;
         const uint khloeAliapohDataId = 1017653;
-        if (Services.ClientState.TerritoryType is idyllshireTerritoryType && IsEnabled) {
-            var khloe = Services.ObjectTable.FirstOrDefault(obj => obj.BaseId is khloeAliapohDataId);
+        if (IClientState.Get().TerritoryType is idyllshireTerritoryType && IsEnabled) {
+            var khloe = IObjectTable.Get().FirstOrDefault(obj => obj.BaseId is khloeAliapohDataId);
 
-            if (khloe is not null && Services.ObjectTable.LocalPlayer is { Position: var playerPosition }) {
+            if (khloe is not null && IObjectTable.Get().LocalPlayer is { Position: var playerPosition }) {
                 var distanceToKhloe = Vector3.Distance(playerPosition, khloe.Position);
                 closeToKhloe = distanceToKhloe < 10.0f;
-                castingTeleport = Services.ObjectTable.LocalPlayer is { IsCasting: true, CastActionId: 5 or 6 };
+                castingTeleport = IObjectTable.Get().LocalPlayer is { IsCasting: true, CastActionId: 5 or 6 };
 
                 var noLongerNearKhloe = lastNearKhloe && !closeToKhloe;
                 var startedTeleportingAway = lastNearKhloe && !lastCastingTeleport && castingTeleport;
 
                 if ((noLongerNearKhloe || startedTeleportingAway) && this is { PlayerHasBook: false, IsNewBookAvailable: true }) {
-                    Services.ChatGui.PrintTaggedMessage(Strings.WondrousTails_ForgotBook, ModuleInfo.DisplayName);
+                    IChatGui.Get().PrintTaggedMessage(Strings.WondrousTails_ForgotBook, ModuleInfo.DisplayName);
                     UIGlobals.PlayChatSoundEffect(11);
                 }
             }

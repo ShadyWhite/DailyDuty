@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
@@ -18,7 +19,7 @@ public class RaidsAllianceDataNode(RaidsAlliance module) : DataNodeBase<RaidsAll
         };
 
         foreach (var (cfc, _) in module.ModuleData.TaskStatus) {
-            var text = Services.DataManager.GetExcelSheet<ContentFinderCondition>().GetRow(cfc).Name.ToString();
+            var text = IDataManager.Get().GetExcelSheet<ContentFinderCondition>().GetRow(cfc).Name.ToString();
 
             TextNode statusNode;
 

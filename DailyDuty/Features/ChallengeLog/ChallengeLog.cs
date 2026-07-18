@@ -8,6 +8,7 @@ using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
@@ -31,14 +32,14 @@ public class ChallengeLog : Module<ChallengeLogConfig, DataBase> {
         => ChallengeLogMigration.Migrate(objectData);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.RegisterListener(AddonEvent.PostOpen, "ContentsFinder", OnContentsFinderOpen);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().RegisterListener(AddonEvent.PostOpen, "ContentsFinder", OnContentsFinderOpen);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
-            Services.AddonLifecycle.UnregisterListener(OnContentsFinderOpen);
+        await IFramework.Get().RunSafely(() => {
+            IAddonLifecycle.Get().UnregisterListener(OnContentsFinderOpen);
         });
 
         contentsFinderStopwatch = null;
@@ -70,7 +71,7 @@ public class ChallengeLog : Module<ChallengeLogConfig, DataBase> {
         var result = string.Empty;
 
         foreach (var warningId in ModuleConfig.TrackedEntries.Where(warningId => !IsContentNoteComplete(warningId))) {
-            if (!Services.DataManager.GetExcelSheet<ContentsNote>().TryGetRow(warningId, out var contentNote)) continue;
+            if (!IDataManager.Get().GetExcelSheet<ContentsNote>().TryGetRow(warningId, out var contentNote)) continue;
 
             result += contentNote.Name.ToString() + "\n";
         }
@@ -84,7 +85,7 @@ public class ChallengeLog : Module<ChallengeLogConfig, DataBase> {
         if (ModuleConfig is not { EnableContentFinderWarning: true } config) return;
 
         if (contentsFinderStopwatch is { IsRunning: true, Elapsed.TotalSeconds: <= 300 }) {
-            Services.PluginLog.Info($"Suppressing Duty Finder Warning, time elapsed: {contentsFinderStopwatch.Elapsed} :: Unlocked at 5 mins");
+            IPluginLog.Get().Info($"Suppressing Duty Finder Warning, time elapsed: {contentsFinderStopwatch.Elapsed} :: Unlocked at 5 mins");
             return;
         }
 
@@ -94,9 +95,9 @@ public class ChallengeLog : Module<ChallengeLogConfig, DataBase> {
         var anyWarningGenerated = false;
 
         foreach (var warningId in config.WarningEntries.Where(warningId => !IsContentNoteComplete(warningId))) {
-            if (!Services.DataManager.GetExcelSheet<ContentsNote>().TryGetRow(warningId, out var contentNote)) continue;
+            if (!IDataManager.Get().GetExcelSheet<ContentsNote>().TryGetRow(warningId, out var contentNote)) continue;
 
-            Services.ChatGui.PrintTaggedMessage($"{contentNote.Name.ToString()} is still incomplete!", "ChallengeLog");
+            IChatGui.Get().PrintTaggedMessage($"{contentNote.Name.ToString()} is still incomplete!", "ChallengeLog");
             anyWarningGenerated = true;
         }
 

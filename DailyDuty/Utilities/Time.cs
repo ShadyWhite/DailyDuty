@@ -1,4 +1,5 @@
 using System;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Lumina.Excel.Sheets;
 
@@ -45,8 +46,8 @@ public static class Time {
 
     public static unsafe DateTime NextJumboCactpotReset() {
         var worldId = AgentLobby.Instance()->LobbyData.HomeWorldId;
-        var world = Services.DataManager.GetExcelSheet<World>().GetRow(worldId);
-        var region = Services.DataManager.GetExcelSheet<WorldDCGroupType>().GetRow(world.DataCenter.RowId).Region.RowId;
+        var world = IDataManager.Get().GetExcelSheet<World>().GetRow(worldId);
+        var region = IDataManager.Get().GetExcelSheet<WorldDCGroupType>().GetRow(world.DataCenter.RowId).Region.RowId;
 
         return region switch {
             // Japan

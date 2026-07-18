@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
@@ -21,7 +22,7 @@ public class LuminaMultiSelectWindow<T> : NativeAddon where T : struct, IExcelRo
             Position = ContentStartPosition,
         };
 
-        var optionEntries = Services.DataManager.GetExcelSheet<T>()
+        var optionEntries = IDataManager.Get().GetExcelSheet<T>()
             .Where(option => FilterFunc?.Invoke(option) ?? true)
             .Where(option => GetLabelFunc?.Invoke(option) is { Length: > 0 })
             .OrderBy(option => GetLabelFunc?.Invoke(option));

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
 using DailyDuty.Enums;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json.Linq;
@@ -29,13 +30,13 @@ public class DutyRoulette : Module<DutyRouletteConfig, DataBase> {
         => DutyRouletteMigration.Migrate(objectData);
 
     protected override async Task OnModuleEnable() {
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             rouletteController = new DutyRouletteDutyFinderController(this);
         });
     }
 
     protected override async Task OnModuleDisable() {
-        await Services.Framework.RunSafely(() => {
+        await IFramework.Get().RunSafely(() => {
             rouletteController?.Dispose();
         });
 
@@ -68,7 +69,7 @@ public class DutyRoulette : Module<DutyRouletteConfig, DataBase> {
 
     private unsafe IEnumerable<ContentRoulette> GetIncompleteTasks()
         => ModuleConfig.TrackedRoulettes
-            .Select(id => Services.DataManager.GetExcelSheet<ContentRoulette>().GetRow(id))
+            .Select(id => IDataManager.Get().GetExcelSheet<ContentRoulette>().GetRow(id))
             .Where(row => !InstanceContent.Instance()->IsRouletteComplete((byte)row.RowId));
 
     private int GetIncompleteCount()

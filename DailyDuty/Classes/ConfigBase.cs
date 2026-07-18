@@ -8,7 +8,7 @@ public class ConfigBase : Savable {
     public bool OnZoneChangeMessage = true;
     public bool ResetMessage;
 
-    public XivChatType MessageChatChannel = Services.PluginInterface.GeneralChatType;
+    public XivChatType MessageChatChannel = DailyDutyPlugin.PluginInterface.GeneralChatType;
     public string CustomStatusMessage = string.Empty;
     public string CustomResetMessage = string.Empty;
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using DailyDuty.Classes;
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -58,7 +59,7 @@ public unsafe class WondrousTailsContentsFinderController : IDisposable {
 
         foreach (var index in Enumerable.Range(0, 16)) {
             var tailsTaskId = PlayerState.Instance()->WeeklyBingoOrderData[index];
-            var tailsDuties = Services.DataManager.GetDutiesForOrderData(tailsTaskId).Select(cfc => cfc.RowId).ToList();
+            var tailsDuties = IDataManager.Get().GetDutiesForOrderData(tailsTaskId).Select(cfc => cfc.RowId).ToList();
             wondrousTailsDuties.Add((uint)index, tailsDuties);
         }
 

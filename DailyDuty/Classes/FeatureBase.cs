@@ -25,15 +25,15 @@ public abstract class FeatureBase {
 
         await OnFeatureEnable();
 
-        Services.Framework.Update += Update;
-        Services.ClientState.TerritoryChanged += TerritoryChanged;
+        IFramework.Get().Update += Update;
+        IClientState.Get().TerritoryChanged += TerritoryChanged;
     }
 
     public async Task Disable() {
         IsEnabled = false;
 
-        Services.Framework.Update -= Update;
-        Services.ClientState.TerritoryChanged -= TerritoryChanged;
+        IFramework.Get().Update -= Update;
+        IClientState.Get().TerritoryChanged -= TerritoryChanged;
 
         await OnFeatureDisable();
     }

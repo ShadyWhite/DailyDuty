@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
 using Dalamud.Game.Gui.Dtr;
+using Dalamud.Plugin.Services;
 using KamiToolKit.BaseTypes;
 
 namespace DailyDuty.Features.ServerInfoBar;
@@ -55,7 +56,7 @@ public class ServerInfoBar : FeatureBase {
         if (ModuleConfig is not { } config) return;
 
         if (ModuleConfig.SavePending) {
-            Services.PluginLog.Debug($"Saving {ModuleInfo.DisplayName} config");
+            IPluginLog.Get().Debug($"Saving {ModuleInfo.DisplayName} config");
             ModuleConfig.Save();
         }
 
@@ -66,7 +67,7 @@ public class ServerInfoBar : FeatureBase {
         var timeUntilWeeklyReset = nextWeeklyReset - DateTime.UtcNow;
 
         if (daily is null && config.SoloDaily) {
-            daily = Services.DtrBar.Get("DailyDuty - Daily Timer");
+            daily = IDtrBar.Get().Get("DailyDuty - Daily Timer");
             daily.OnClick = _ => System.ConfigurationWindow.Toggle();
             daily.Tooltip = Strings.ServerInfoBar_ClickOpenConfig;
         }
@@ -77,7 +78,7 @@ public class ServerInfoBar : FeatureBase {
         }
 
         if (weekly is null && config.SoloWeekly) {
-            weekly = Services.DtrBar.Get("DailyDuty - Weekly Timer");
+            weekly = IDtrBar.Get().Get("DailyDuty - Weekly Timer");
             weekly.OnClick = _ => System.ConfigurationWindow.Toggle();
             weekly.Tooltip = Strings.ServerInfoBar_ClickOpenConfig;
         }
@@ -88,7 +89,7 @@ public class ServerInfoBar : FeatureBase {
         }
 
         if (combo is null && config.Combo) {
-            combo = Services.DtrBar.Get("DailyDuty - Combo Timer");
+            combo = IDtrBar.Get().Get("DailyDuty - Combo Timer");
             combo.OnClick = OnComboClick;
             combo.Tooltip = Strings.ServerInfoBar_LeftClickChange + "\n" +
                             Strings.ServerInfoBar_RightClickOpenConfig;

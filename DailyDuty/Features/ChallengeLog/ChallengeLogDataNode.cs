@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using DailyDuty.CustomNodes;
 using DailyDuty.ListItemNodes;
+using Dalamud.Plugin.Services;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
 using Lumina.Excel.Sheets;
@@ -13,7 +14,7 @@ public class ChallengeLogDataNode(ChallengeLog module) : DataNodeBase<ChallengeL
 
     protected override NodeBase BuildDataNode()
         => listNode = new ListNode<ContentsNote, ContentsNoteListItemNode> {
-            OptionsList = Services.DataManager.GetExcelSheet<ContentsNote>()
+            OptionsList = IDataManager.Get().GetExcelSheet<ContentsNote>()
                 .Where(row => row is { RowId: not 0, Name.IsEmpty: false })
                 .ToList(),
             ItemSpacing = 1.0f,

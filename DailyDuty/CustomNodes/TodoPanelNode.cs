@@ -4,6 +4,7 @@ using System.Numerics;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
 using DailyDuty.Features.TodoOverlay;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.Classes;
@@ -161,8 +162,8 @@ public unsafe class TodoPanelNode : OverlayNode {
             .OrderBy(module => module.Name)
             .ToHashSet();
 
-        var shouldHideInDuties = ModuleTodoOverlayConfig.HideInDuties && Services.Condition.IsBoundByDuty;
-        var shouldHideInQuestEvent = ModuleTodoOverlayConfig.HideDuringQuests && Services.Condition.IsInCutsceneOrQuestEvent;
+        var shouldHideInDuties = ModuleTodoOverlayConfig.HideInDuties && ICondition.Get().IsBoundByDuty;
+        var shouldHideInQuestEvent = ModuleTodoOverlayConfig.HideDuringQuests && ICondition.Get().IsInCutsceneOrQuestEvent;
         var shouldHideNoWarnings = !(warningModules.Count is not 0 || Config.Modules.Count is 0);
 
         IsVisible = !shouldHideNoWarnings && !shouldHideInQuestEvent && !shouldHideInDuties;

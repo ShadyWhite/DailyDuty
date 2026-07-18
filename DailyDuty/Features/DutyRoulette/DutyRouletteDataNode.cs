@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DailyDuty.CustomNodes;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using KamiToolKit.BaseTypes;
 using KamiToolKit.Nodes;
@@ -17,7 +18,7 @@ public unsafe class DutyRouletteDataNode(DutyRoulette module) : DataNodeBase<Dut
             FitWidth = true,
         };
 
-        foreach (var roulette in Services.DataManager.GetExcelSheet<ContentRoulette>()) {
+        foreach (var roulette in IDataManager.Get().GetExcelSheet<ContentRoulette>()) {
             if (roulette is not { Name.ByteLength: > 0, ContentRouletteRoleBonus.RowId: not 0 }) continue;
             TextNode statusNode;
 

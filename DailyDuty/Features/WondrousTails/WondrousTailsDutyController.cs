@@ -3,6 +3,7 @@ using System.Linq;
 using DailyDuty.Classes;
 using DailyDuty.Enums;
 using Dalamud.Game.DutyState;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 namespace DailyDuty.Features.WondrousTails;
@@ -13,17 +14,17 @@ public unsafe class WondrousTailsDutyController : IDisposable {
     public WondrousTailsDutyController(WondrousTails module) {
         this.module = module;
 
-        Services.DutyState.DutyStarted += OnDutyStarted;
-        Services.DutyState.DutyCompleted += OnDutyCompleted;
+        IDutyState.Get().DutyStarted += OnDutyStarted;
+        IDutyState.Get().DutyCompleted += OnDutyCompleted;
 
-        if (Services.DutyState.IsDutyStarted) {
-            OnDutyStarted(Services.ClientState.TerritoryType);
+        if (IDutyState.Get().IsDutyStarted) {
+            OnDutyStarted(IClientState.Get().TerritoryType);
         }
     }
 
     public void Dispose() {
-        Services.DutyState.DutyStarted -= OnDutyStarted;
-        Services.DutyState.DutyCompleted -= OnDutyCompleted;
+        IDutyState.Get().DutyStarted -= OnDutyStarted;
+        IDutyState.Get().DutyCompleted -= OnDutyCompleted;
     }
 
     private void OnDutyCompleted(IDutyStateEventArgs args)
@@ -71,7 +72,7 @@ public unsafe class WondrousTailsDutyController : IDisposable {
 
     private static PlayerState.WeeklyBingoTaskStatus? GetStatusForTerritory(uint territory) {
         foreach (var index in Enumerable.Range(0, 16)) {
-            var territoriesForSlot = Services.DataManager.GetTerritoriesForOrderData(PlayerState.Instance()->WeeklyBingoOrderData[index]);
+            var territoriesForSlot = IDataManager.Get().GetTerritoriesForOrderData(PlayerState.Instance()->WeeklyBingoOrderData[index]);
 
             if (territoriesForSlot.Any(terr => terr.RowId == territory)) {
                 return PlayerState.Instance()->GetWeeklyBingoTaskStatus(index);
@@ -82,7 +83,7 @@ public unsafe class WondrousTailsDutyController : IDisposable {
     }
 
     private void PrintMessage(string message)
-        => Services.ChatGui.PrintPayloadMessage(
+        => IChatGui.Get().PrintPayloadMessage(
             module.ModuleConfig.MessageChatChannel,
             PayloadId.OpenWondrousTailsBook,
             "WondrousTails",
