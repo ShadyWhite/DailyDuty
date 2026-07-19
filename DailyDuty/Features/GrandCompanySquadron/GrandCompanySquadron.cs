@@ -33,18 +33,18 @@ public class GrandCompanySquadron : Module<ConfigBase, GrandCompanySquadronData>
 
     public override DataNodeBase DataNode => new GrandCompanySquadronDataNode(this);
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreFinalize, "GcArmyExpeditionResult", GcArmyExpeditionResultPreFinalize);
-            IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.GcArmyExpedition, AgentGcArmyExpeditionReceiveEvent);
-        });
+    protected override Task OnModuleEnable() {
+        IAddonLifecycle.Get().RegisterListener(AddonEvent.PreFinalize, "GcArmyExpeditionResult", GcArmyExpeditionResultPreFinalize);
+        IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.GcArmyExpedition, AgentGcArmyExpeditionReceiveEvent);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().UnregisterListener(GcArmyExpeditionResultPreFinalize);
-            IAgentLifecycle.Get().UnregisterListener(AgentGcArmyExpeditionReceiveEvent);
-        });
+    protected override Task OnModuleDisable() {
+        IAddonLifecycle.Get().UnregisterListener(GcArmyExpeditionResultPreFinalize);
+        IAgentLifecycle.Get().UnregisterListener(AgentGcArmyExpeditionReceiveEvent);
+
+        return Task.CompletedTask;
     }
 
     protected override StatusMessage GetStatusMessage() {

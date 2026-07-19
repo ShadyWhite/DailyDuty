@@ -23,16 +23,16 @@ public class JumboCactpot : Module<ConfigBase, JumboCactpotData> {
     public override DataNodeBase DataNode => new JumboCactpotDataNode(this);
     private int ticketData = -1;
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.LotteryWeekly, OnLotteryEvent);
-        });
+    protected override Task OnModuleEnable() {
+        IAgentLifecycle.Get().RegisterListener(AgentEvent.PreReceiveEvent, AgentId.LotteryWeekly, OnLotteryEvent);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAgentLifecycle.Get().UnregisterListener(OnLotteryEvent);
-        });
+    protected override Task OnModuleDisable() {
+        IAgentLifecycle.Get().UnregisterListener(OnLotteryEvent);
+
+        return Task.CompletedTask;
     }
 
     protected override StatusMessage GetStatusMessage() => new() {

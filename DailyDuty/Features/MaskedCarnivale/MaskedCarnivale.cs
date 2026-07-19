@@ -30,21 +30,21 @@ public class MaskedCarnivale : Module<MaskedCarnivaleConfig, MaskedCarnivaleData
     protected override MaskedCarnivaleConfig MigrateConfig(JObject objectData)
         => MaskedCarnivaleMigration.Migrate(objectData);
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().RegisterListener(AddonEvent.PostSetup, "AOZContentResult", AozContentResultPostSetup);
-        });
+    protected override Task OnModuleEnable() {
+        IAddonLifecycle.Get().RegisterListener(AddonEvent.PostSetup, "AOZContentResult", AozContentResultPostSetup);
 
         // Fix for configs that don't have these data entries, newly generated configs will default with them.
         ModuleData.TaskData.TryAdd(12449, false);
         ModuleData.TaskData.TryAdd(12448, false);
         ModuleData.TaskData.TryAdd(12447, false);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().UnregisterListener(AozContentResultPostSetup);
-        });
+    protected override Task OnModuleDisable() {
+        IAddonLifecycle.Get().UnregisterListener(AozContentResultPostSetup);
+
+        return Task.CompletedTask;
     }
 
     protected override StatusMessage GetStatusMessage() => new() {

@@ -109,13 +109,16 @@ public class ModuleOptionNode : TreeListItemNode<LoadedModule>, ITreeListItemNod
     }
 
     private async Task ToggleModification(bool shouldEnableModification) {
+        if (System.SystemConfig is null) return;
         if (ItemData is null) return;
 
         if (shouldEnableModification && ItemData.State is LoadedState.Disabled) {
             await System.ModuleManager.TryEnableModule(ItemData);
+            await System.SystemConfig.Save();
         }
         else if (!shouldEnableModification && ItemData.State is LoadedState.Enabled) {
             await System.ModuleManager.TryDisableModification(ItemData);
+            await System.SystemConfig.Save();
         }
 
         if (ItemData.State is LoadedState.Errored) {

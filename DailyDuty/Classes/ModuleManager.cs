@@ -9,6 +9,7 @@ using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using KamiToolKit.Extensions;
 
 namespace DailyDuty.Classes;
 
@@ -35,38 +36,38 @@ public class ModuleManager : IAsyncDisposable {
     }
 
     public async Task LoadModules() {
+        if (System.SystemConfig is null) return;
+
         frameworkEventHook?.Enable();
-
         IsUnloading = false;
-
-        LoadedModules = [];
-        List<Task> loadTasks = [];
-        List<Task> enableTasks = [];
 
         var orderedModules = GetAllModules()
             .OrderBy(module => module.ModuleInfo.Type)
             .ThenBy(module => module.Name);
 
+        var moduleList = orderedModules
+            .Select(module => new LoadedModule(module, LoadedState.Disabled))
+            .ToList();
+
+        LoadedModules = moduleList;
+
         // Load all modules before enabling any of them, so timers and others don't have to rebuild once load is done.
-        foreach (var module in orderedModules) {
-            DailyDutyPlugin.PluginInterface.Inject(module);
-
-            var newLoadedModule = new LoadedModule(module, LoadedState.Disabled);
-            LoadedModules.Add(newLoadedModule);
-
-            loadTasks.Add(module.LoadAsync());
-        }
-
-        await Task.WhenAll(loadTasks);
+        await Task.WhenAll(moduleList.Select(m => m.FeatureBase.LoadAsync()));
 
         // Then enable modules that want to be enabled.
-        foreach (var loadedModule in LoadedModules) {
-            if (System.SystemConfig?.EnabledModules.Contains(loadedModule.Name) ?? false) {
-                enableTasks.Add(TryEnableModule(loadedModule));
-            }
-        }
+        await Task.WhenAll(LoadedModules
+            .Where(module => System.SystemConfig.EnabledModules.Contains(module.Name))
+            .Select(async module => {
+                try {
+                    await TryEnableModule(module);
+                }
+                catch (Exception e) {
+                    IPluginLog.Get().Exception(e);
+                }
+            })
+            .ToList());
 
-        await Task.WhenAll(enableTasks);
+        await System.SystemConfig.Save();
 
         loadedModulesByName = LoadedModules.ToFrozenDictionary(module => module.Name, module => module);
 
@@ -152,7 +153,6 @@ public class ModuleManager : IAsyncDisposable {
             module.State = LoadedState.Enabled;
             IPluginLog.Get().Info($"Successfully Enabled {module.Name}");
             System.SystemConfig.EnabledModules.Add(module.Name);
-            await System.SystemConfig.Save();
             OnFeatureEnabled?.Invoke();
         }
         catch (Exception e) {

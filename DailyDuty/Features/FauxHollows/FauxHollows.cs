@@ -21,16 +21,16 @@ public class FauxHollows : Module<FauxHollowsConfig, FauxHollowsData> {
     public override DataNodeBase DataNode => new FauxHollowsDataNode(this);
     public override ConfigNodeBase ConfigNode => new FauxHollowsConfigNode(this);
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "WeeklyPuzzle", WeeklyPuzzlePreSetup);
-        });
+    protected override Task OnModuleEnable() {
+        IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "WeeklyPuzzle", WeeklyPuzzlePreSetup);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().UnregisterListener(WeeklyPuzzlePreSetup);
-        });
+    protected override Task OnModuleDisable() {
+        IAddonLifecycle.Get().UnregisterListener(WeeklyPuzzlePreSetup);
+
+        return Task.CompletedTask;
     }
 
     public override TimeSpan GetResetPeriod()

@@ -22,16 +22,16 @@ public class MiniCactpot : Module<ConfigBase, MiniCactpotData> {
 
     public override DataNodeBase DataNode => new MiniCactpotDataNode(this);
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "LotteryDaily", LotteryDailyPreSetup);
-        });
+    protected override Task OnModuleEnable() {
+        IAddonLifecycle.Get().RegisterListener(AddonEvent.PreSetup, "LotteryDaily", LotteryDailyPreSetup);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().UnregisterListener(LotteryDailyPreSetup);
-        });
+    protected override Task OnModuleDisable() {
+        IAddonLifecycle.Get().UnregisterListener(LotteryDailyPreSetup);
+
+        return Task.CompletedTask;
     }
 
     protected override StatusMessage GetStatusMessage() => new() {

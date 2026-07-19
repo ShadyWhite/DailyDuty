@@ -31,18 +31,18 @@ public class ChallengeLog : Module<ChallengeLogConfig, DataBase> {
     protected override ChallengeLogConfig MigrateConfig(JObject objectData)
         => ChallengeLogMigration.Migrate(objectData);
 
-    protected override async Task OnModuleEnable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().RegisterListener(AddonEvent.PostOpen, "ContentsFinder", OnContentsFinderOpen);
-        });
+    protected override Task OnModuleEnable() {
+        IAddonLifecycle.Get().RegisterListener(AddonEvent.PostOpen, "ContentsFinder", OnContentsFinderOpen);
+
+        return Task.CompletedTask;
     }
 
-    protected override async Task OnModuleDisable() {
-        await IFramework.Get().RunSafely(() => {
-            IAddonLifecycle.Get().UnregisterListener(OnContentsFinderOpen);
-        });
+    protected override Task OnModuleDisable() {
+        IAddonLifecycle.Get().UnregisterListener(OnContentsFinderOpen);
 
         contentsFinderStopwatch = null;
+
+        return Task.CompletedTask;
     }
 
     public override DateTime GetNextResetDateTime()
