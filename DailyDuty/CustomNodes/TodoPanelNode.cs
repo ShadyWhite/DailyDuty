@@ -134,8 +134,10 @@ public unsafe class TodoPanelNode : OverlayNode {
         warningList.RecalculateLayout();
     }
 
-    protected override void Dispose(bool disposing, bool isNativeDestructor) {
-        base.Dispose(disposing, isNativeDestructor);
+    protected override void Dispose(bool isNativeDestructor) {
+        if (IsDisposed) return;
+
+        base.Dispose(isNativeDestructor);
 
         configWindow?.Dispose();
         configWindow = null;

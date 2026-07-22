@@ -150,8 +150,10 @@ public class TodoOverlayConfigNode : ResNode {
         listNode.RecalculateSizes();
     }
 
-    protected override void Dispose(bool disposing, bool isNativeDestructor) {
-        base.Dispose(disposing, isNativeDestructor);
+    protected override void Dispose(bool isNativeDestructor) {
+        if (IsDisposed) return;
+
+        base.Dispose(isNativeDestructor);
 
         panelConfigWindow?.Dispose();
         panelConfigWindow = null;
