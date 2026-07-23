@@ -564,7 +564,7 @@
     <value>Attends ! Tu as oublié ton carnet de Khloe !</value>
   </data>
   <data name="StatusMessages_ChallengeLogIncomplete" xml:space="preserve">
-    <value>Carnet des objectifs incomplet</value>
+    <value>Objectif(s) incomplet(s)</value>
   </data>
   <data name="StatusMessages_CustomDeliveryIncomplete" xml:space="preserve">
     <value>Commande(s) spéciale(s) restante(s) pour atteindre le seuil</value>
@@ -657,7 +657,7 @@
     <value>Si vous accomplissez cette mission, vous recevrez un autocollant en récompense</value>
   </data>
   <data name="WondrousTails_RerollsAvailable" xml:space="preserve">
-    <value>Recollages disponibles</value>
+    <value>Coups de pouce disponibles</value>
   </data>
   <data name="WondrousTails_StickersClaimable" xml:space="preserve">
     <value>Autocollants à réclamer</value>
